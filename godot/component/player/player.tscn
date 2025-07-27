@@ -1,9 +1,38 @@
-[gd_scene load_steps=5 format=3 uid="uid://bhkpq1h8bb5ni"]
+[gd_scene load_steps=10 format=3 uid="uid://bhkpq1h8bb5ni"]
 
 [ext_resource type="Script" uid="uid://ck204beh5vksj" path="res://component/player/player.gd" id="1_sqr5p"]
+[ext_resource type="Texture2D" uid="uid://bnnieii8ai2br" path="res://resource/image/player_torso0000.png" id="2_ncdqb"]
+[ext_resource type="Texture2D" uid="uid://bh6bg384bdho0" path="res://resource/image/player_torso0001.png" id="3_gv2br"]
+[ext_resource type="Texture2D" uid="uid://cynoukw5kpsn8" path="res://resource/image/player_head0000.png" id="4_iwv34"]
+[ext_resource type="Texture2D" uid="uid://ds5h7015gp2mt" path="res://resource/image/player_head0001.png" id="5_jf5pc"]
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_sqr5p"]
-size = Vector2(64, 64)
+[sub_resource type="SpriteFrames" id="SpriteFrames_j8swj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ncdqb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_gv2br")
+}],
+"loop": true,
+"name": &"default",
+"speed": 15.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_edkfu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_iwv34")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_jf5pc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 15.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gphvm"]
 size = Vector2(64, 64)
@@ -15,9 +44,19 @@ radius = 64.0
 collision_layer = 0
 script = ExtResource("1_sqr5p")
 
-[node name="PlayerSprite" type="Sprite2D" parent="."]
+[node name="PlayerTorso" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
-texture = SubResource("PlaceholderTexture2D_sqr5p")
+modulate = Color(1, 0.387956, 0.319725, 1)
+sprite_frames = SubResource("SpriteFrames_j8swj")
+autoplay = "default"
+frame = 1
+frame_progress = 0.088333
+
+[node name="PlayerBody" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+sprite_frames = SubResource("SpriteFrames_edkfu")
+autoplay = "default"
+frame_progress = 0.830468
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_gphvm")

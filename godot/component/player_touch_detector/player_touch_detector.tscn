@@ -1,3 +1,6 @@
-[gd_scene format=3 uid="uid://ng1kl8h3q7qu"]
+[gd_scene load_steps=2 format=3 uid="uid://ng1kl8h3q7qu"]
+
+[ext_resource type="Script" uid="uid://d4hq6cgf788f6" path="res://component/player_touch_detector/player_touch_detector.gd" id="1_gdne0"]
 
 [node name="PlayerTouchDetector" type="Node"]
+script = ExtResource("1_gdne0")
