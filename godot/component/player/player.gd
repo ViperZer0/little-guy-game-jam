@@ -48,6 +48,8 @@ func _ready() -> void:
 	if PlayerController.is_solo():
 		if PlayerController.currently_selected_character == player:
 			show_selection_arrow()
+		else:
+			selection_arrow_sprite.hide()
 
 		PlayerController.character_control_swapped.connect(_on_character_control_swapped)
 

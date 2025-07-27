@@ -65,6 +65,7 @@ metadata/_custom_type_script = "uid://mwgdmfugm5vu"
 
 [node name="SelectionArrow" type="Sprite2D" parent="."]
 unique_name_in_owner = true
+visible = false
 position = Vector2(0, -94)
 texture = ExtResource("7_iwv34")
 
