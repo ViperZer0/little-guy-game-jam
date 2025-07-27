@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://5njxtfsqt8yp"]
+
+[ext_resource type="Script" uid="uid://bdf2u0a3257gx" path="res://autoload/settings_manager/settings_manager.gd" id="1_0hxcx"]
+
+[node name="SettingsManager" type="Node"]
+script = ExtResource("1_0hxcx")
+animation_flicker = false

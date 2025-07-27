@@ -1,3 +1,6 @@
-[gd_scene format=3 uid="uid://cjoes5200n31i"]
+[gd_scene load_steps=2 format=3 uid="uid://cjoes5200n31i"]
+
+[ext_resource type="Script" uid="uid://d0p6wh20kixxt" path="res://autoload/scene_manager/scene_manager.gd" id="1_083xy"]
 
 [node name="SceneManager" type="Node"]
+script = ExtResource("1_083xy")
