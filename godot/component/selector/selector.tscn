@@ -1,0 +1,55 @@
+[gd_scene load_steps=9 format=3 uid="uid://bp2lbmk4p7xtm"]
+
+[ext_resource type="Script" uid="uid://c6v1ulw17seo0" path="res://component/selector/selector.gd" id="1_soc00"]
+[ext_resource type="Script" uid="uid://bhjrdea3hxy80" path="res://src/toggle_animated_texture.gd" id="2_dme6y"]
+[ext_resource type="Texture2D" uid="uid://dmqf8nxsor5y7" path="res://component/selector/left_arrow_0000.png" id="2_pagk1"]
+[ext_resource type="Texture2D" uid="uid://dwesxkjphw3cl" path="res://component/selector/right_arrow_0000.png" id="2_srgne"]
+[ext_resource type="Texture2D" uid="uid://c3jk7k6g1nit3" path="res://component/selector/left_arrow_0001.png" id="3_afc4j"]
+[ext_resource type="Texture2D" uid="uid://hm7wxacxy6vr" path="res://component/selector/right_arrow_0001.png" id="3_dme6y"]
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_qewyx"]
+frames = 2
+frame_0/texture = ExtResource("2_pagk1")
+frame_0/duration = 0.1
+frame_1/texture = ExtResource("3_afc4j")
+frame_1/duration = 0.1
+script = ExtResource("2_dme6y")
+metadata/_custom_type_script = "uid://bhjrdea3hxy80"
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_pagk1"]
+frames = 2
+frame_0/texture = ExtResource("2_srgne")
+frame_0/duration = 0.1
+frame_1/texture = ExtResource("3_dme6y")
+frame_1/duration = 0.1
+script = ExtResource("2_dme6y")
+metadata/_custom_type_script = "uid://bhjrdea3hxy80"
+
+[node name="Selector" type="HBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+script = ExtResource("1_soc00")
+
+[node name="LeftButton" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = SubResource("AnimatedTexture_qewyx")
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="RightButton" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = SubResource("AnimatedTexture_pagk1")
+stretch_mode = 5
+
+[connection signal="gui_input" from="LeftButton" to="." method="_on_left_button_gui_input"]
+[connection signal="gui_input" from="RightButton" to="." method="_on_right_button_gui_input"]

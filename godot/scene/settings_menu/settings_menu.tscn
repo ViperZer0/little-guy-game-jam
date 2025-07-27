@@ -1,0 +1,135 @@
+[gd_scene load_steps=3 format=3 uid="uid://wh0awdtwddlt"]
+
+[ext_resource type="Script" uid="uid://cccdyrsbe6al5" path="res://scene/settings_menu/settings_menu.gd" id="1_6wtn1"]
+[ext_resource type="PackedScene" uid="uid://bp2lbmk4p7xtm" path="res://component/selector/selector.tscn" id="1_shkjk"]
+
+[node name="SettingsMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6wtn1")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"Background"
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 64
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="EnableAnimation" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Spacer" type="Control" parent="MarginContainer/VBoxContainer/EnableAnimation"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/EnableAnimation"]
+layout_mode = 2
+text = "Enable Animation Flicker"
+
+[node name="Spacer2" type="Control" parent="MarginContainer/VBoxContainer/EnableAnimation"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="EnableAnimationSelector" parent="MarginContainer/VBoxContainer/EnableAnimation" instance=ExtResource("1_shkjk")]
+unique_name_in_owner = true
+layout_mode = 2
+options = Array[StringName]([&"Yes", &"No"])
+
+[node name="Spacer3" type="Control" parent="MarginContainer/VBoxContainer/EnableAnimation"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="FlipHoriz" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Spacer" type="Control" parent="MarginContainer/VBoxContainer/FlipHoriz"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/FlipHoriz"]
+layout_mode = 2
+text = "Flip horizontal axis when upside down"
+
+[node name="Spacer2" type="Control" parent="MarginContainer/VBoxContainer/FlipHoriz"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="FlipHorizSelector" parent="MarginContainer/VBoxContainer/FlipHoriz" instance=ExtResource("1_shkjk")]
+unique_name_in_owner = true
+layout_mode = 2
+options = Array[StringName]([&"Yes", &"No"])
+
+[node name="Spacer3" type="Control" parent="MarginContainer/VBoxContainer/FlipHoriz"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="FlipVert" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Spacer" type="Control" parent="MarginContainer/VBoxContainer/FlipVert"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/FlipVert"]
+layout_mode = 2
+text = "Flip vertical axis when upside down"
+
+[node name="Spacer2" type="Control" parent="MarginContainer/VBoxContainer/FlipVert"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="FlipVertSelector" parent="MarginContainer/VBoxContainer/FlipVert" instance=ExtResource("1_shkjk")]
+unique_name_in_owner = true
+layout_mode = 2
+options = Array[StringName]([&"Yes", &"No"])
+
+[node name="Spacer3" type="Control" parent="MarginContainer/VBoxContainer/FlipVert"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Spacer" type="Control" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Description" type="Label" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "This setting blahblahblah"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Back"
+
+[connection signal="mouse_entered" from="MarginContainer/VBoxContainer/EnableAnimation" to="." method="set_description_text" binds= ["Toggles animation flicker"]]
+[connection signal="selected_option_changed" from="MarginContainer/VBoxContainer/EnableAnimation/EnableAnimationSelector" to="." method="_on_enable_animation_selector_selected_option_changed"]
+[connection signal="mouse_entered" from="MarginContainer/VBoxContainer/FlipHoriz" to="." method="set_description_text" binds= ["If yes, left and right movement is flipped when a player is upside down. Movement is relative to the player, not to the screen."]]
+[connection signal="selected_option_changed" from="MarginContainer/VBoxContainer/FlipHoriz/FlipHorizSelector" to="." method="_on_flip_horiz_selector_selected_option_changed"]
+[connection signal="mouse_entered" from="MarginContainer/VBoxContainer/FlipVert" to="." method="set_description_text" binds= ["If yes, jumping is done by pressing Down/S when upside down. If no, jumping is always done by pressing W or Up."]]
+[connection signal="selected_option_changed" from="MarginContainer/VBoxContainer/FlipVert/FlipVertSelector" to="." method="_on_flip_vert_selector_selected_option_changed"]
