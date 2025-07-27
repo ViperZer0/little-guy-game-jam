@@ -4,4 +4,3 @@
 
 [node name="SettingsManager" type="Node"]
 script = ExtResource("1_0hxcx")
-upside_down_vertical_controls_relative_to_player = true

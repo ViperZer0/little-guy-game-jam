@@ -34,11 +34,12 @@ animations = [{
 "speed": 15.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_gphvm"]
-size = Vector2(64, 64)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ncdqb"]
+radius = 52.0
+height = 124.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sqr5p"]
-radius = 64.0
+radius = 80.0
 
 [node name="Player" type="CharacterBody2D" groups=["players"]]
 collision_layer = 0
@@ -59,7 +60,7 @@ autoplay = "default"
 frame_progress = 0.830468
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_gphvm")
+shape = SubResource("CapsuleShape2D_ncdqb")
 
 [node name="PlayerDetector" type="Area2D" parent="."]
 unique_name_in_owner = true
