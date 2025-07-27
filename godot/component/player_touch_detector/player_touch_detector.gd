@@ -21,4 +21,5 @@ func _after_ready() -> void:
 	player.players_collided.connect(_on_players_collided)
 
 func _on_players_collided():
+	print("Players touched!")
 	players_collided.emit()

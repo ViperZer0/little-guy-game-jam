@@ -39,7 +39,9 @@ func _ready() -> void:
 			set_collision_layer_value(2, false)
 			player_detector.set_collision_mask_value(3, false)
 
+	# Set torso color depending on who we're playing
 	torso_sprite.modulate = Color("#54aaff") if player == PlayerNames.Art else Color("#ff7d79")
+
 	# Force initialization of correct gravity and sprite direction and stuff
 	_set_upside_down(upside_down)
 

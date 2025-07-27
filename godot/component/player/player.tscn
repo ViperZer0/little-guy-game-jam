@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://bhkpq1h8bb5ni"]
+[gd_scene load_steps=11 format=3 uid="uid://bhkpq1h8bb5ni"]
 
 [ext_resource type="Script" uid="uid://ck204beh5vksj" path="res://component/player/player.gd" id="1_sqr5p"]
-[ext_resource type="Texture2D" uid="uid://bnnieii8ai2br" path="res://resource/image/player_torso0000.png" id="2_ncdqb"]
-[ext_resource type="Texture2D" uid="uid://bh6bg384bdho0" path="res://resource/image/player_torso0001.png" id="3_gv2br"]
-[ext_resource type="Texture2D" uid="uid://cynoukw5kpsn8" path="res://resource/image/player_head0000.png" id="4_iwv34"]
-[ext_resource type="Texture2D" uid="uid://ds5h7015gp2mt" path="res://resource/image/player_head0001.png" id="5_jf5pc"]
+[ext_resource type="Texture2D" uid="uid://bnnieii8ai2br" path="res://component/player/player_torso0000.png" id="2_ncdqb"]
+[ext_resource type="Texture2D" uid="uid://bh6bg384bdho0" path="res://component/player/player_torso0001.png" id="3_gv2br"]
+[ext_resource type="Script" uid="uid://mwgdmfugm5vu" path="res://src/toggle_animated_sprite.gd" id="4_gv2br"]
+[ext_resource type="Texture2D" uid="uid://cynoukw5kpsn8" path="res://component/player/player_head0000.png" id="4_iwv34"]
+[ext_resource type="Texture2D" uid="uid://ds5h7015gp2mt" path="res://component/player/player_head0001.png" id="5_jf5pc"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_j8swj"]
 animations = [{
@@ -17,7 +18,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 15.0
+"speed": 10.0
 }]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_edkfu"]
@@ -31,7 +32,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 15.0
+"speed": 10.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ncdqb"]
@@ -49,15 +50,17 @@ script = ExtResource("1_sqr5p")
 unique_name_in_owner = true
 modulate = Color(1, 0.387956, 0.319725, 1)
 sprite_frames = SubResource("SpriteFrames_j8swj")
-autoplay = "default"
 frame = 1
 frame_progress = 0.088333
+script = ExtResource("4_gv2br")
+metadata/_custom_type_script = "uid://mwgdmfugm5vu"
 
 [node name="PlayerBody" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
 sprite_frames = SubResource("SpriteFrames_edkfu")
-autoplay = "default"
 frame_progress = 0.830468
+script = ExtResource("4_gv2br")
+metadata/_custom_type_script = "uid://mwgdmfugm5vu"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_ncdqb")
