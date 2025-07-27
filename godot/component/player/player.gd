@@ -71,7 +71,7 @@ func _get_direction_name(direction: Direction) -> StringName:
 		[true, true, Direction.RIGHT]:
 			return "move_left"
 		_:
-			printerr("Did not get a valid combination of inputs in _get_direction_name!!!")
+			push_error("Did not get a valid combination of inputs in _get_direction_name!!!")
 			return ""
 
 func _get_jump_name() -> StringName:
@@ -83,7 +83,7 @@ func _get_jump_name() -> StringName:
 		[true, true]:
 			return "move_down"
 		_:
-			printerr("Did not get a valid combination of inputs in _get_jump_name!")
+			push_error("Did not get a valid combination of inputs in _get_jump_name!")
 			return ""
 
 func _get_action_strength(action_name: StringName) -> float:

@@ -15,5 +15,5 @@ static func invert_name(player_name: Name) -> Name:
 		Name.MIKE:
 			return Name.ART
 		_:
-			printerr("PlayerName.Name was neither ART or MIKE")
+			push_error("PlayerName.Name was neither ART or MIKE")
 			return Name.ART
