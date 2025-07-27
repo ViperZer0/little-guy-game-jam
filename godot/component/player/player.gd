@@ -16,6 +16,9 @@ enum Direction {
 
 @onready var torso_sprite: AnimatedSprite2D = %PlayerTorso
 @onready var head_sprite: AnimatedSprite2D = %PlayerBody
+@onready var selection_arrow_sprite: Sprite2D = %SelectionArrow
+@onready var selection_arrow_sprite_offset: float = selection_arrow_sprite.position.y
+@onready var selection_arrow_timer: Timer = %SelectionArrowTimeout
 @onready var player_detector: Area2D = %PlayerDetector
 
 ## This signal is fired when the two players touched!
@@ -41,6 +44,13 @@ func _ready() -> void:
 
 	# Set torso color depending on who we're playing
 	torso_sprite.modulate = Color("#54aaff") if player == PlayerNames.Art else Color("#ff7d79")
+
+	if PlayerController.is_solo():
+		if PlayerController.currently_selected_character == player:
+			show_selection_arrow()
+
+		PlayerController.character_control_swapped.connect(_on_character_control_swapped)
+
 
 	# Force initialization of correct gravity and sprite direction and stuff
 	_set_upside_down(upside_down)
@@ -126,6 +136,11 @@ func _set_upside_down(upside_down: bool) -> void:
 	if head_sprite:
 		head_sprite.flip_v = upside_down
 
+	# Flip arrow sprite
+	if selection_arrow_sprite:
+		selection_arrow_sprite.flip_v = upside_down
+		selection_arrow_sprite.position.y = selection_arrow_sprite_offset * (-1 if upside_down else 1)
+
 	# Change up direction
 	up_direction = Vector2(0, 1 if upside_down else -1)
 
@@ -133,3 +148,15 @@ func _on_player_detector_body_entered(body: Node2D) -> void:
 	# This should be a player, but we'll check just in case.
 	if body is Player:
 		players_collided.emit()
+
+func _on_character_control_swapped(selected_player: PlayerNames.Name) -> void:
+	if selected_player == player:
+		show_selection_arrow()
+	else:
+		selection_arrow_sprite.hide()
+
+func show_selection_arrow() -> void:
+	selection_arrow_sprite.show()
+	selection_arrow_timer.start()
+	await selection_arrow_timer.timeout
+	selection_arrow_sprite.hide()

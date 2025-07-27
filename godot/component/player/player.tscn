@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bhkpq1h8bb5ni"]
+[gd_scene load_steps=12 format=3 uid="uid://bhkpq1h8bb5ni"]
 
 [ext_resource type="Script" uid="uid://ck204beh5vksj" path="res://component/player/player.gd" id="1_sqr5p"]
 [ext_resource type="Texture2D" uid="uid://bnnieii8ai2br" path="res://component/player/player_torso0000.png" id="2_ncdqb"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://mwgdmfugm5vu" path="res://src/toggle_animated_sprite.gd" id="4_gv2br"]
 [ext_resource type="Texture2D" uid="uid://cynoukw5kpsn8" path="res://component/player/player_head0000.png" id="4_iwv34"]
 [ext_resource type="Texture2D" uid="uid://ds5h7015gp2mt" path="res://component/player/player_head0001.png" id="5_jf5pc"]
+[ext_resource type="Texture2D" uid="uid://cnqq8uovmgfyg" path="res://component/player/arrow.png" id="7_iwv34"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_j8swj"]
 animations = [{
@@ -61,6 +62,14 @@ sprite_frames = SubResource("SpriteFrames_edkfu")
 frame_progress = 0.830468
 script = ExtResource("4_gv2br")
 metadata/_custom_type_script = "uid://mwgdmfugm5vu"
+
+[node name="SelectionArrow" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, -94)
+texture = ExtResource("7_iwv34")
+
+[node name="SelectionArrowTimeout" type="Timer" parent="."]
+unique_name_in_owner = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_ncdqb")
