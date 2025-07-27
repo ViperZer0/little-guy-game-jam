@@ -1,0 +1,22 @@
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://sbec6r51v5c0"]
+
+[ext_resource type="Texture2D" uid="uid://b14mcy0pjufhn" path="res://resource/image/button_1.png" id="1_f2ka1"]
+[ext_resource type="Texture2D" uid="uid://bwnfrrp3iussv" path="res://resource/image/button_2.png" id="2_nrbva"]
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_d04pj"]
+frames = 2
+frame_0/texture = ExtResource("1_f2ka1")
+frame_0/duration = 0.1
+frame_1/texture = ExtResource("2_nrbva")
+frame_1/duration = 0.1
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jwd26"]
+texture = SubResource("AnimatedTexture_d04pj")
+texture_margin_left = 64.0
+texture_margin_top = 64.0
+texture_margin_right = 64.0
+texture_margin_bottom = 64.0
+region_rect = Rect2(0, 0, 256, 256)
+
+[resource]
+Button/styles/normal = SubResource("StyleBoxTexture_jwd26")

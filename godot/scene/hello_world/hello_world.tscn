@@ -48,4 +48,12 @@ size_flags_horizontal = 4
 size_flags_vertical = 0
 text = "Hello World!"
 
+[node name="Button" type="Button" parent="."]
+offset_left = 406.0
+offset_top = 498.0
+offset_right = 980.0
+offset_bottom = 829.0
+text = "Agh
+"
+
 [connection signal="input_event" from="Sprite/Area2D" to="." method="_on_click_sprite"]
