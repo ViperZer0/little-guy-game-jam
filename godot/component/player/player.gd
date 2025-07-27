@@ -12,6 +12,8 @@ class_name Player extends CharacterBody2D
 @onready var player_sprite: Sprite2D = %PlayerSprite
 
 var gravity: float
+var move_speed: float = 20000.0
+var jump_velocity: float = 400.0
 
 func _ready() -> void:
 	# Force initialization of correct gravity and sprite direction and stuff
@@ -21,7 +23,42 @@ func _physics_process(delta: float) -> void:
 	# Move player according to gravity
 	velocity.y += gravity * delta
 
+	# Handle jump
+	print(_is_input_just_pressed("move_jump"))
+
+	if _is_input_just_pressed("move_jump") and is_on_floor():
+		velocity.y = jump_velocity * (1 if upside_down else -1)
+
+	# Move side to side
+	velocity.x = (_get_action_strength("move_right") - _get_action_strength("move_left")) * delta * move_speed
+
 	move_and_slide()
+
+func _get_action_strength(action_name: StringName) -> float:
+	if PlayerController.can_move(player):
+		# If we're solo, merge Art and Mike controls (return the max of the two strengths
+		if PlayerController.is_solo():
+			return max(Input.get_action_strength(_get_input_name_for_character(PlayerNames.Art, action_name)), Input.get_action_strength(_get_input_name_for_character(PlayerNames.Mike, action_name)))
+		# Otherwise we only check our set of controls
+		else:
+			return Input.get_action_strength(_get_input_name_for_character(player, action_name))
+
+	else:
+		# No movement
+		return 0.0
+
+func _is_input_just_pressed(action_name: StringName) -> bool:
+	if PlayerController.can_move(player):
+		if PlayerController.is_solo():
+			return Input.is_action_just_pressed(_get_input_name_for_character(PlayerNames.Art, action_name)) or Input.is_action_just_pressed(_get_input_name_for_character(PlayerNames.Mike, action_name))
+		else:
+			return Input.is_action_just_pressed(_get_input_name_for_character(player, action_name))
+
+	else:
+		return false
+
+func _get_input_name_for_character(character: PlayerNames.Name, action_name: StringName) -> StringName:
+	return str(PlayerNames.Name.keys()[character]).to_lower() + "_" + action_name
 
 func _set_upside_down(upside_down: bool) -> void:
 	# Flip gravity if needed.
@@ -29,3 +66,6 @@ func _set_upside_down(upside_down: bool) -> void:
 	# Flip sprite
 	if player_sprite:
 		player_sprite.flip_v = upside_down
+
+	# Change up direction
+	up_direction = Vector2(0, 1 if upside_down else -1)

@@ -7,3 +7,13 @@ enum Name {
 	ART,
 	MIKE
 }
+
+static func invert_name(player_name: Name) -> Name:
+	match player_name:
+		Name.ART:
+			return Name.MIKE
+		Name.MIKE:
+			return Name.ART
+		_:
+			printerr("PlayerName.Name was neither ART or MIKE")
+			return Name.ART
