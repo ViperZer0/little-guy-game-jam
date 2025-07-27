@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://2hb57vlg0pxp"]
+[gd_scene load_steps=13 format=3 uid="uid://2hb57vlg0pxp"]
 
 [ext_resource type="Script" uid="uid://c5c21whjq4mnd" path="res://scene/hello_world/hello_world.gd" id="1_egqhh"]
 [ext_resource type="PackedScene" uid="uid://bhkpq1h8bb5ni" path="res://component/player/player.tscn" id="2_6l3ak"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://ct7bvycn7gcag" path="res://resource/image/level_1_0001.png" id="3_nc8ox"]
 [ext_resource type="Script" uid="uid://mwgdmfugm5vu" path="res://src/toggle_animated_sprite.gd" id="4_oaqiu"]
 [ext_resource type="PackedScene" uid="uid://ng1kl8h3q7qu" path="res://component/player_touch_detector/player_touch_detector.tscn" id="5_nc8ox"]
+[ext_resource type="Script" uid="uid://bsvs1txs1728o" path="res://src/typerwriter_label.gd" id="7_tpyd0"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_oaqiu"]
 animations = [{
@@ -74,3 +75,13 @@ player = 1
 upside_down = true
 
 [node name="PlayerTouchDetector" parent="." instance=ExtResource("5_nc8ox")]
+
+[node name="TypewriterLabel" type="Label" parent="."]
+offset_left = 150.0
+offset_top = 111.0
+offset_right = 408.0
+offset_bottom = 170.0
+text = "Hello hello!!"
+script = ExtResource("7_tpyd0")
+letters_per_second = 20.0
+metadata/_custom_type_script = "uid://bsvs1txs1728o"
