@@ -1,0 +1,15 @@
+# Marks top-most EditorConfig file.
+root = true
+
+# Unix-style newlines with a newline ending every file
+[*]
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+# Use hard tabs for gd files.
+[*.gd]
+indent_style = tab
+
+[*.py]
+indent_style = tab

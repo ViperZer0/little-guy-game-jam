@@ -1,0 +1,51 @@
+[gd_scene load_steps=4 format=3 uid="uid://2hb57vlg0pxp"]
+
+[ext_resource type="Texture2D" uid="uid://cln4ej57cqg7p" path="res://resource/image/icon.svg" id="1_ay5ps"]
+[ext_resource type="Script" uid="uid://c5c21whjq4mnd" path="res://scene/hello_world/hello_world.gd" id="1_egqhh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ggxsm"]
+size = Vector2(140, 140)
+
+[node name="HelloWorld" type="Node2D"]
+script = ExtResource("1_egqhh")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(568, 237)
+texture = ExtResource("1_ay5ps")
+
+[node name="Area2D" type="Area2D" parent="Sprite"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite/Area2D"]
+shape = SubResource("RectangleShape2D_ggxsm")
+
+[node name="Control" type="Control" parent="Sprite"]
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -64.0
+offset_top = -64.0
+offset_right = -64.0
+offset_bottom = -64.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 8
+
+[node name="Label" type="Label" parent="Sprite/Control"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -47.5
+offset_right = 47.5
+offset_bottom = 23.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "Hello World!"
+
+[connection signal="input_event" from="Sprite/Area2D" to="." method="_on_click_sprite"]

@@ -1,0 +1,7 @@
+A design document should describe a relevant game concept that can be expressed in the game through mechanics, systems, or narrative content. The document's structure can take any shape that is required to fully describe the idea.
+
+A Design document may describe a high-level idea that needs to be refined and translated into low-level game components. In these cases, usually the design document will be created first and fleshed out, then implemented gradually through game components. As these components are created, more documentation should be generated as the abstract idea in this Design document becomes more concrete. Once the design has been fully implemented and documented, the Design document may be archived, deleted, or simply linked to the other relevant documents.
+
+In other cases, a Design document may describe abstract or aesthetic subjects that aren't directly expressed through specific game components. In these cases, the design document is typically a permanent member of the documentation.
+
+Ultimately, the key difference between a Design and an Architecture document is abstract versus concrete, where the Design document describes a "What", and an Architecture document describes a "How".

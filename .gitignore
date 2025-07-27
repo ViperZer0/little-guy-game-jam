@@ -1,0 +1,9 @@
+.vscode
+.vs
+.obsidian
+
+bin/.env
+
+__pycache__
+
+export/*
