@@ -15,12 +15,29 @@ enum Direction {
 		_set_upside_down(value)
 
 @onready var player_sprite: Sprite2D = %PlayerSprite
+@onready var player_detector: Area2D = %PlayerDetector
+
+## This signal is fired when the two players touched!
+signal players_collided()
 
 var gravity: float
 var move_speed: float = 20000.0
 var jump_velocity: float = 400.0
 
 func _ready() -> void:
+	# Set collisions/detections between players
+	match player:
+		PlayerNames.Art:
+			set_collision_layer_value(2, true)
+			player_detector.set_collision_mask_value(3, true)
+			set_collision_layer_value(3, false)
+			player_detector.set_collision_mask_value(2, false)
+		PlayerNames.Mike:
+			set_collision_layer_value(3, true)
+			player_detector.set_collision_mask_value(2, true)
+			set_collision_layer_value(2, false)
+			player_detector.set_collision_mask_value(3, false)
+
 	# Force initialization of correct gravity and sprite direction and stuff
 	_set_upside_down(upside_down)
 
@@ -104,3 +121,8 @@ func _set_upside_down(upside_down: bool) -> void:
 
 	# Change up direction
 	up_direction = Vector2(0, 1 if upside_down else -1)
+
+func _on_player_detector_body_entered(body: Node2D) -> void:
+	# This should be a player, but we'll check just in case.
+	if body is Player:
+		players_collided.emit()
