@@ -11,8 +11,11 @@ func ready() -> void:
 	tree.node_added.connect(_on_scene_tree_node_added)
 
 func _on_scene_tree_node_added(node: Node) -> void:
-	if node is SettingsManager:
+	# All of this code potentially runs in the editor despite not being a tool script
+	if not Engine.is_editor_hint() and node is SettingsManager:
+		print(node)
 		var settings: SettingsManager = node as SettingsManager
+		print(settings)
 		settings.animation_flicker_changed.connect(_on_animation_flicker_changed)
 		pause = !settings.animation_flicker
 		# Now we can unsubscribe and check tf out
