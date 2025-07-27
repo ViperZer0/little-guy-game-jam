@@ -7,9 +7,16 @@ func _init() -> void:
 func ready() -> void:
 	# What the fuck
 	var tree = Engine.get_main_loop() as SceneTree
-	var settings: Settings = tree.root.get_node("/root/Settings") as Settings
-	settings.animation_flicker_changed.connect(_on_animation_flicker_changed)
-	pause = !settings.animation_flicker
+	# Listen for nodes being added so we can handle when the Settings autoload is added
+	tree.node_added.connect(_on_scene_tree_node_added)
+
+func _on_scene_tree_node_added(node: Node) -> void:
+	if node is SettingsManager:
+		var settings: SettingsManager = node as SettingsManager
+		settings.animation_flicker_changed.connect(_on_animation_flicker_changed)
+		pause = !settings.animation_flicker
+		# Now we can unsubscribe and check tf out
+		(Engine.get_main_loop() as SceneTree).node_added.disconnect(_on_scene_tree_node_added)
 
 func _on_animation_flicker_changed(to: bool) -> void:
 	pause = !to

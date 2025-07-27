@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=11 format=3 uid="uid://sbec6r51v5c0"]
+[gd_resource type="Theme" load_steps=10 format=3 uid="uid://sbec6r51v5c0"]
 
 [ext_resource type="Texture2D" uid="uid://b14mcy0pjufhn" path="res://resource/image/button_1.png" id="1_f2ka1"]
 [ext_resource type="FontFile" uid="uid://cxldbpaxab5ln" path="res://resource/font/HappyMonkey-Regular.ttf" id="1_nrbva"]
@@ -34,21 +34,14 @@ texture_margin_right = 64.0
 texture_margin_bottom = 64.0
 region_rect = Rect2(0, 0, 256, 256)
 
-[sub_resource type="AnimatedTexture" id="AnimatedTexture_d04pj"]
-frames = 2
-frame_0/texture = ExtResource("1_f2ka1")
-frame_0/duration = 0.1
-frame_1/texture = ExtResource("2_nrbva")
-frame_1/duration = 0.1
-
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_d04pj"]
-texture = SubResource("AnimatedTexture_d04pj")
+texture = SubResource("AnimatedTexture_jwd26")
 texture_margin_left = 64.0
 texture_margin_top = 64.0
 texture_margin_right = 64.0
 texture_margin_bottom = 64.0
 region_rect = Rect2(0, 0, 256, 256)
-modulate_color = Color(0.28485, 0.28485, 0.28485, 1)
+modulate_color = Color(0.129558, 0.129558, 0.129558, 1)
 
 [resource]
 Background/base_type = &"Panel"
