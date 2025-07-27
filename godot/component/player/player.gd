@@ -1,5 +1,10 @@
 class_name Player extends CharacterBody2D
 
+enum Direction {
+	LEFT,
+	RIGHT
+}
+
 @export var player: PlayerNames.Name = PlayerNames.Art
 
 @export var upside_down: bool = false:
@@ -24,15 +29,45 @@ func _physics_process(delta: float) -> void:
 	velocity.y += gravity * delta
 
 	# Handle jump
-	print(_is_input_just_pressed("move_jump"))
-
-	if _is_input_just_pressed("move_jump") and is_on_floor():
+	if _is_input_just_pressed(_get_jump_name()) and is_on_floor():
 		velocity.y = jump_velocity * (1 if upside_down else -1)
 
 	# Move side to side
-	velocity.x = (_get_action_strength("move_right") - _get_action_strength("move_left")) * delta * move_speed
+	velocity.x = (_get_action_strength(_get_direction_name(Direction.RIGHT)) - _get_action_strength(_get_direction_name(Direction.LEFT))) * delta * move_speed
 
 	move_and_slide()
+
+func _get_direction_name(direction: Direction) -> StringName:
+	match [upside_down, SettingsManager.upside_down_horizontal_controls_relative_to_player, direction]:
+		# Rightside up player always has normal controls
+		[false, _, Direction.LEFT]:
+			return "move_left"
+		[false, _, Direction.RIGHT]:
+			return "move_right"
+		# Upside down player may have inverted controls
+		[true, false, Direction.LEFT]:
+			return "move_left"
+		[true, false, Direction.RIGHT]:
+			return "move_right"
+		[true, true, Direction.LEFT]:
+			return "move_right"
+		[true, true, Direction.RIGHT]:
+			return "move_left"
+		_:
+			printerr("Did not get a valid combination of inputs in _get_direction_name!!!")
+			return ""
+
+func _get_jump_name() -> StringName:
+	match [upside_down, SettingsManager.upside_down_vertical_controls_relative_to_player]:
+		[false, _]:
+			return "move_jump"
+		[true, false]:
+			return "move_jump"
+		[true, true]:
+			return "move_down"
+		_:
+			printerr("Did not get a valid combination of inputs in _get_jump_name!")
+			return ""
 
 func _get_action_strength(action_name: StringName) -> float:
 	if PlayerController.can_move(player):
