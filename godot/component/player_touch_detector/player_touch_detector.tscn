@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://ng1kl8h3q7qu"]
+
+[node name="PlayerTouchDetector" type="Node"]
