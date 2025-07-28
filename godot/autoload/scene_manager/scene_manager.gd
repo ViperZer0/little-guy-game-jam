@@ -1,6 +1,9 @@
 ## This singleton manages loading and switching between scenes.
 extends Node
 
+
+# Array of old scenes as PackedScenes??
+var scene_stack: Array[PackedScene]
 var current_scene: Node
 
 func _ready() -> void:
@@ -22,14 +25,32 @@ func queue_load_next_scene_path(path: String) -> void:
 	ResourceLoader.load_threaded_request(path)
 
 ## Switch to the new scene. We don't use a path here bc we want to be able to set up the
-## new scene after we instantiate it but before we load the new scene
+## new scene after we instantiate it but before we load the new scene.
+##
+## We also leave the old current_scene loaded, we just remove it from the scene tree.
+## We can go back to it with [method switch_to_previous_scene]
 func switch_scenes(node: Node) -> void:
-	_defer_switch_scenes.call_deferred(node)
+	var packed_scene = PackedScene.new()
+	packed_scene.pack(current_scene)
+	scene_stack.push_back(packed_scene)
+	_switch_scenes_deferred.call_deferred(node, false)
 
-func _defer_switch_scenes(node: Node) -> void:
-	# We can free bc we're calling this function deferred.
-	current_scene.free()
+## Unloads the current scene (and DOES delete it), and goes back to the previous scene before this one.
+func switch_to_previous_scene() -> void:
+	# Get the new end of the scene stack
+	var previous_scene = scene_stack.pop_back()
+	var previous_scene_node = previous_scene.instantiate()
+	_switch_scenes_deferred.call_deferred(previous_scene_node, true)
 
-	current_scene = node
-	get_tree().root.add_child(current_scene)
-	get_tree().current_scene = current_scene
+# This function does NOT manipulate the scene_stack, you gotta do that on your own. :]
+func _switch_scenes_deferred(to: Node, delete_old_scene: bool) -> void:
+	if delete_old_scene:
+		# We can free bc we're calling this function deferred.
+		current_scene.free()
+	else:
+		# Otherwise we just remove it from the scenetree.
+		get_tree().root.remove_child(current_scene)
+
+	current_scene = to
+	get_tree().root.add_child(to)
+	get_tree().current_scene = to

@@ -40,3 +40,6 @@ func _on_flip_vert_selector_selected_option_changed(option: StringName) -> void:
 			SettingsManager.upside_down_vertical_controls_relative_to_player = false
 		_:
 			push_warning("Unrecognized option selected in FlipVertSelector")
+
+func _on_back_button_pressed() -> void:
+	SceneManager.switch_to_previous_scene()

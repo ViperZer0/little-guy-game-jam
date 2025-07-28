@@ -37,6 +37,10 @@ theme_override_constants/margin_bottom = 16
 layout_mode = 2
 theme_override_constants/separation = 16
 
+[node name="Spacer2" type="Control" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
 [node name="EnableAnimation" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 alignment = 1
@@ -123,7 +127,7 @@ text = "This setting blahblahblah"
 horizontal_alignment = 1
 autowrap_mode = 2
 
-[node name="Button" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="BackButton" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Back"
 
@@ -133,3 +137,4 @@ text = "Back"
 [connection signal="selected_option_changed" from="MarginContainer/VBoxContainer/FlipHoriz/FlipHorizSelector" to="." method="_on_flip_horiz_selector_selected_option_changed"]
 [connection signal="mouse_entered" from="MarginContainer/VBoxContainer/FlipVert" to="." method="set_description_text" binds= ["If yes, jumping is done by pressing Down/S when upside down. If no, jumping is always done by pressing W or Up."]]
 [connection signal="selected_option_changed" from="MarginContainer/VBoxContainer/FlipVert/FlipVertSelector" to="." method="_on_flip_vert_selector_selected_option_changed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]
