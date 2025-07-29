@@ -60,3 +60,5 @@ LabelLarge/base_type = &"Label"
 LabelLarge/font_sizes/font_size = 64
 LabelSmall/base_type = &"Label"
 LabelSmall/font_sizes/font_size = 32
+LabelTitle/base_type = &"Label"
+LabelTitle/font_sizes/font_size = 300

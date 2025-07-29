@@ -20,8 +20,10 @@ scene_path = &"res://scene/settings_menu/settings_menu.tscn"
 [node name="LoadPlayGame" parent="." instance=ExtResource("2_ar5m3")]
 scene_path = &"res://scene/solo_or_coop_picker/solo_or_coop_picker.tscn"
 
-[node name="Panel" type="Panel" parent="."]
-layout_mode = 1
+[node name="Background" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Panel" type="Panel" parent="Background"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -29,35 +31,42 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_type_variation = &"Background"
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
+[node name="Foreground" type="CanvasLayer" parent="."]
+
+[node name="MarginContainer" type="MarginContainer" parent="Foreground"]
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -540.0
 grow_horizontal = 2
-grow_vertical = 0
+grow_vertical = 2
 theme_override_constants/margin_left = 32
 theme_override_constants/margin_right = 32
 theme_override_constants/margin_bottom = 32
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Foreground/MarginContainer"]
 layout_mode = 2
 
-[node name="PlayGameButton" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="Foreground/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"LabelTitle"
+text = "Touch"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlayGameButton" type="Button" parent="Foreground/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Play Game"
 
-[node name="SettingsButton" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="SettingsButton" type="Button" parent="Foreground/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Settings"
 
-[node name="AboutButton" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="AboutButton" type="Button" parent="Foreground/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "About
 "
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/PlayGameButton" to="LoadPlayGame" method="switch_to_scene"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/SettingsButton" to="LoadSettings" method="switch_to_scene"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/AboutButton" to="LoadAbout" method="switch_to_scene"]
+[connection signal="pressed" from="Foreground/MarginContainer/VBoxContainer/PlayGameButton" to="LoadPlayGame" method="switch_to_scene"]
+[connection signal="pressed" from="Foreground/MarginContainer/VBoxContainer/SettingsButton" to="LoadSettings" method="switch_to_scene"]
+[connection signal="pressed" from="Foreground/MarginContainer/VBoxContainer/AboutButton" to="LoadAbout" method="switch_to_scene"]
