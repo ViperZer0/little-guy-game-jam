@@ -16,13 +16,22 @@ func set_index(index: int) -> void:
 	selected_option_changed.emit(options[current_index])
 
 func _on_left_button_gui_input(event: InputEvent):
-	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed():
-		current_index = (current_index - 1) % options.size()
-		label.text = options[current_index]
-		selected_option_changed.emit(options[current_index])
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
+		if event.is_pressed():
+			current_index = (current_index - 1) % options.size()
+			label.text = options[current_index]
+			selected_option_changed.emit(options[current_index])
+			ButtonSFXPlayer.play_click()
+		if event.is_released():
+			ButtonSFXPlayer.play_release()
+
 
 func _on_right_button_gui_input(event: InputEvent):
-	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed():
-		current_index = (current_index + 1) % options.size()
-		label.text = options[current_index]
-		selected_option_changed.emit(options[current_index])
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
+		if event.is_pressed():
+			current_index = (current_index + 1) % options.size()
+			label.text = options[current_index]
+			selected_option_changed.emit(options[current_index])
+			ButtonSFXPlayer.play_click()
+		else:
+			ButtonSFXPlayer.play_release()
