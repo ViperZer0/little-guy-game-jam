@@ -26,7 +26,7 @@ signal players_collided()
 
 var gravity: float
 var move_speed: float = 20000.0
-var jump_velocity: float = 400.0
+var jump_velocity: float = 800.0
 
 func _ready() -> void:
 	# Set collisions/detections between players
@@ -58,8 +58,14 @@ func _ready() -> void:
 	_set_upside_down(upside_down)
 
 func _physics_process(delta: float) -> void:
+	# Are we going back down? If so we want to move faster i think.
+	var extra_accel: float = 1.0
+	if velocity.y * (-1 if upside_down else 1) > 0.0:
+		print("Going back down!")
+		extra_accel = 2.0
+
 	# Move player according to gravity
-	velocity.y += gravity * delta
+	velocity.y += gravity * delta * extra_accel
 
 	# Handle jump
 	if _is_input_just_pressed(_get_jump_name()) and is_on_floor():
