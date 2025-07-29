@@ -1,0 +1,98 @@
+[gd_scene load_steps=8 format=3 uid="uid://bxqgno1dsw1cu"]
+
+[ext_resource type="Script" uid="uid://cdkknh0qx8pbb" path="res://scene/game_win/game_win.gd" id="1_7uvps"]
+[ext_resource type="Script" uid="uid://bsvs1txs1728o" path="res://src/typerwriter_label.gd" id="1_8clsq"]
+[ext_resource type="PackedScene" uid="uid://bhkpq1h8bb5ni" path="res://component/player/player.tscn" id="2_5a7ix"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_8clsq"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_5a7ix"]
+normal = Vector2(1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_7uvps"]
+normal = Vector2(-1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_k08j3"]
+normal = Vector2(0, 1)
+
+[node name="GameWin" type="Node2D"]
+script = ExtResource("1_7uvps")
+title_scene_path = "uid://by0csoymkqgv0"
+
+[node name="Bounds" type="StaticBody2D" parent="."]
+
+[node name="Floor" type="CollisionShape2D" parent="Bounds"]
+position = Vector2(960, 857)
+shape = SubResource("WorldBoundaryShape2D_8clsq")
+
+[node name="WallLeft" type="CollisionShape2D" parent="Bounds"]
+position = Vector2(0, 540)
+shape = SubResource("WorldBoundaryShape2D_5a7ix")
+
+[node name="WallRight" type="CollisionShape2D" parent="Bounds"]
+position = Vector2(1920, 540)
+shape = SubResource("WorldBoundaryShape2D_7uvps")
+
+[node name="Ceiling" type="CollisionShape2D" parent="Bounds"]
+position = Vector2(960, 0)
+shape = SubResource("WorldBoundaryShape2D_k08j3")
+
+[node name="Background" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Panel" type="Panel" parent="Background"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"Background"
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Win" type="Label" parent="UI"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 83.0
+offset_bottom = 83.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"LabelLarge"
+text = "You win! Thank you for playing!"
+horizontal_alignment = 1
+script = ExtResource("1_8clsq")
+letters_per_second = 60.0
+metadata/_custom_type_script = "uid://bsvs1txs1728o"
+
+[node name="MarginContainer" type="MarginContainer" parent="UI"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer"]
+layout_mode = 2
+
+[node name="Spacer" type="Control" parent="UI/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Button" type="Button" parent="UI/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Back to Title
+"
+
+[node name="Player" parent="." instance=ExtResource("2_5a7ix")]
+position = Vector2(249, 776)
+
+[node name="Player2" parent="." instance=ExtResource("2_5a7ix")]
+position = Vector2(1657, 197)
+player = 1
+upside_down = true
+
+[connection signal="pressed" from="UI/MarginContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]

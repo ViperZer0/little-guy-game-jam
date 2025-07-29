@@ -10,7 +10,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_pd6sy")
-next_scene_path = "res://scene/hello_world/hello_world.tscn"
+next_scene_path = "uid://dj0aik8qev8kl"
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1

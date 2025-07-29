@@ -2,11 +2,17 @@ extends Node
 
 ## List of all the levels in the correct order.
 @export var level_paths: Array[StringName]
+@export var game_win_path: StringName
 
 var current_level: int = 0
 
 ## Triggers loading the next level but doesn't switch to it next.
 func queue_load_level(level: int) -> void:
+	# If we try to go past the last level, go to the game over scene instead
+	if level >= level_paths.size():
+		SceneManager.queue_load_next_scene_path(game_win_path)
+		return
+
 	var level_path = level_paths[level]
 	if !level_path:
 		push_warning("Attempted to load an invalid level number! Ignoring!")
@@ -16,6 +22,14 @@ func queue_load_level(level: int) -> void:
 
 ## Now we switch to the next level!
 func load_level(level: int) -> void:
+	# If we try to go past the last level, go to the game win scene instead
+	if level >= level_paths.size():
+		var scene = SceneManager.load_next_scene_path(game_win_path)
+		var node = scene.instantiate()
+		current_level = level
+		SceneManager.switch_scenes(node)
+		return
+
 	var level_path = level_paths[level]
 	if !level_path:
 		push_warning("Attempted to load an invalid level number! Ignoring!")

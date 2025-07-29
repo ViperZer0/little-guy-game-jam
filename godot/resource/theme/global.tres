@@ -56,5 +56,7 @@ Button/styles/pressed = SubResource("StyleBoxTexture_d04pj")
 Label/colors/font_color = Color(0, 0, 0, 1)
 Label/font_sizes/font_size = 48
 Label/fonts/font = ExtResource("1_d04pj")
+LabelLarge/base_type = &"Label"
+LabelLarge/font_sizes/font_size = 64
 LabelSmall/base_type = &"Label"
 LabelSmall/font_sizes/font_size = 32

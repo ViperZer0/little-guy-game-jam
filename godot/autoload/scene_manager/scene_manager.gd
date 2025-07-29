@@ -46,6 +46,14 @@ func switch_to_previous_scene() -> void:
 	var previous_scene_node = previous_scene.instantiate()
 	_switch_scenes_deferred.call_deferred(previous_scene_node, true)
 
+## Clears the contents of the scene stack, unloads all scenes except the current one.
+func clear_scene_stack() -> void:
+	# We don't free the scenes. We just forget about them and wait for GC to delet them.
+	# for scene in scene_stack:
+	#	scene.free()
+
+	scene_stack.clear()
+
 # This function does NOT manipulate the scene_stack, you gotta do that on your own. :]
 func _switch_scenes_deferred(to: Node, delete_old_scene: bool) -> void:
 	if delete_old_scene:

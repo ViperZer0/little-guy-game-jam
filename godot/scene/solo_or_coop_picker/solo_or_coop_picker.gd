@@ -1,6 +1,6 @@
 extends Control
 
-@export var next_scene_path: String
+@export_file("*.tscn") var next_scene_path: String
 
 @onready var mode_description_label: Label = %ModeDescription
 
