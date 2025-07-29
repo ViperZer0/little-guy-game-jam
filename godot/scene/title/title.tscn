@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://by0csoymkqgv0"]
+[gd_scene load_steps=4 format=3 uid="uid://by0csoymkqgv0"]
 
 [ext_resource type="Script" uid="uid://bam2x4btpv6d3" path="res://scene/title/title.gd" id="1_b1rhm"]
 [ext_resource type="PackedScene" uid="uid://b4f5s4u6qwjxx" path="res://component/scene_loader/scene_loader.tscn" id="2_ar5m3"]
+[ext_resource type="Script" uid="uid://da0xs16dtxehk" path="res://component/sfx_button/sfx_button.gd" id="3_j2w51"]
 
 [node name="Title" type="Control"]
 layout_mode = 3
@@ -57,15 +58,21 @@ vertical_alignment = 1
 [node name="PlayGameButton" type="Button" parent="Foreground/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Play Game"
+script = ExtResource("3_j2w51")
+metadata/_custom_type_script = "uid://da0xs16dtxehk"
 
 [node name="SettingsButton" type="Button" parent="Foreground/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Settings"
+script = ExtResource("3_j2w51")
+metadata/_custom_type_script = "uid://da0xs16dtxehk"
 
 [node name="AboutButton" type="Button" parent="Foreground/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "About
 "
+script = ExtResource("3_j2w51")
+metadata/_custom_type_script = "uid://da0xs16dtxehk"
 
 [connection signal="pressed" from="Foreground/MarginContainer/VBoxContainer/PlayGameButton" to="LoadPlayGame" method="switch_to_scene"]
 [connection signal="pressed" from="Foreground/MarginContainer/VBoxContainer/SettingsButton" to="LoadSettings" method="switch_to_scene"]
