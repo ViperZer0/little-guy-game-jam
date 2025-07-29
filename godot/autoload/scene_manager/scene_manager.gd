@@ -39,6 +39,10 @@ func switch_scenes(node: Node) -> void:
 func switch_to_previous_scene() -> void:
 	# Get the new end of the scene stack
 	var previous_scene = scene_stack.pop_back()
+	if !previous_scene:
+		push_warning("No previous scene to go back to. Ignoring")
+		return
+
 	var previous_scene_node = previous_scene.instantiate()
 	_switch_scenes_deferred.call_deferred(previous_scene_node, true)
 
