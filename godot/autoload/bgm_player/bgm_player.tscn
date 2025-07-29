@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://b76ua57okchlf"]
 
-[ext_resource type="AudioStream" uid="uid://dox45klweri2h" path="res://resource/sounds/almost-bliss.mp3" id="1_5veyt"]
+[ext_resource type="AudioStream" uid="uid://dox45klweri2h" path="res://autoload/bgm_player/almost-bliss.mp3" id="1_5veyt"]
 
 [node name="BgmPlayer" type="Node"]
 
