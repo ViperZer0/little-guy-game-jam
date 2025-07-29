@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bhkpq1h8bb5ni"]
+[gd_scene load_steps=14 format=3 uid="uid://bhkpq1h8bb5ni"]
 
 [ext_resource type="Script" uid="uid://ck204beh5vksj" path="res://component/player/player.gd" id="1_sqr5p"]
 [ext_resource type="Texture2D" uid="uid://bnnieii8ai2br" path="res://component/player/player_torso0000.png" id="2_ncdqb"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cynoukw5kpsn8" path="res://component/player/player_head0000.png" id="4_iwv34"]
 [ext_resource type="Texture2D" uid="uid://ds5h7015gp2mt" path="res://component/player/player_head0001.png" id="5_jf5pc"]
 [ext_resource type="Texture2D" uid="uid://cnqq8uovmgfyg" path="res://component/player/arrow.png" id="7_iwv34"]
+[ext_resource type="AudioStream" uid="uid://vb3thpkw7bb5" path="res://component/player/jump.ogg" id="8_jf5pc"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_j8swj"]
 animations = [{
@@ -42,6 +43,12 @@ height = 124.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sqr5p"]
 radius = 80.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_j8swj"]
+random_pitch = 1.2
+random_volume_offset_db = 2.0
+streams_count = 1
+stream_0/stream = ExtResource("8_jf5pc")
 
 [node name="Player" type="CharacterBody2D" groups=["players"]]
 collision_layer = 0
@@ -80,5 +87,9 @@ unique_name_in_owner = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector"]
 shape = SubResource("CircleShape2D_sqr5p")
+
+[node name="JumpAudio" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = SubResource("AudioStreamRandomizer_j8swj")
 
 [connection signal="body_entered" from="PlayerDetector" to="." method="_on_player_detector_body_entered"]

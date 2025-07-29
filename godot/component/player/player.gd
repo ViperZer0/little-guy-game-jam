@@ -20,6 +20,7 @@ enum Direction {
 @onready var selection_arrow_sprite_offset: float = selection_arrow_sprite.position.y
 @onready var selection_arrow_timer: Timer = %SelectionArrowTimeout
 @onready var player_detector: Area2D = %PlayerDetector
+@onready var jump_audio_player: AudioStreamPlayer2D = %JumpAudio
 
 ## This signal is fired when the two players touched!
 signal players_collided()
@@ -69,6 +70,7 @@ func _physics_process(delta: float) -> void:
 
 	# Handle jump
 	if _is_input_just_pressed(_get_jump_name()) and is_on_floor():
+		jump_audio_player.play()
 		velocity.y = jump_velocity * (1 if upside_down else -1)
 
 	# Move side to side
