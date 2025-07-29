@@ -47,3 +47,14 @@ signal upside_down_vertical_controls_relative_to_player_changed(enabled: bool)
 			upside_down_vertical_controls_relative_to_player_changed.emit(value)
 			setting_changed.emit("upside_down_vertical_controls_relative_to_player", value)
 
+@export var BGM_volume: float:
+	get:
+		return AudioServer.get_bus_volume_linear(1) * 100
+	set(value):
+		AudioServer.set_bus_volume_linear(1, value / 100.0)
+
+@export var SFX_volume: float:
+	get:
+		return AudioServer.get_bus_volume_linear(2) * 100
+	set(value):
+		AudioServer.set_bus_volume_linear(2, value / 100.0)

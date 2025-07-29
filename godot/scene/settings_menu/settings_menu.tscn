@@ -117,6 +117,58 @@ options = Array[StringName]([&"Yes", &"No"])
 layout_mode = 2
 size_flags_horizontal = 3
 
+[node name="BGMSlider" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Spacer" type="Control" parent="MarginContainer/VBoxContainer/BGMSlider"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/BGMSlider"]
+layout_mode = 2
+text = "Background Music Volume"
+
+[node name="Spacer2" type="Control" parent="MarginContainer/VBoxContainer/BGMSlider"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="BGMSlider" type="HSlider" parent="MarginContainer/VBoxContainer/BGMSlider"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Spacer3" type="Control" parent="MarginContainer/VBoxContainer/BGMSlider"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SFXSlider" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Spacer" type="Control" parent="MarginContainer/VBoxContainer/SFXSlider"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/SFXSlider"]
+layout_mode = 2
+text = "Sound Effects Volume"
+
+[node name="Spacer2" type="Control" parent="MarginContainer/VBoxContainer/SFXSlider"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SFXSlider" type="HSlider" parent="MarginContainer/VBoxContainer/SFXSlider"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Spacer3" type="Control" parent="MarginContainer/VBoxContainer/SFXSlider"]
+layout_mode = 2
+size_flags_horizontal = 3
+
 [node name="Spacer" type="Control" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
@@ -139,4 +191,8 @@ metadata/_custom_type_script = "uid://da0xs16dtxehk"
 [connection signal="selected_option_changed" from="MarginContainer/VBoxContainer/FlipHoriz/FlipHorizSelector" to="." method="_on_flip_horiz_selector_selected_option_changed"]
 [connection signal="mouse_entered" from="MarginContainer/VBoxContainer/FlipVert" to="." method="set_description_text" binds= ["If yes, jumping is done by pressing Down/S when upside down. If no, jumping is always done by pressing W or Up."]]
 [connection signal="selected_option_changed" from="MarginContainer/VBoxContainer/FlipVert/FlipVertSelector" to="." method="_on_flip_vert_selector_selected_option_changed"]
+[connection signal="mouse_entered" from="MarginContainer/VBoxContainer/BGMSlider" to="." method="set_description_text" binds= ["If yes, jumping is done by pressing Down/S when upside down. If no, jumping is always done by pressing W or Up."]]
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/BGMSlider/BGMSlider" to="." method="_on_bgm_slider_value_changed"]
+[connection signal="mouse_entered" from="MarginContainer/VBoxContainer/SFXSlider" to="." method="set_description_text" binds= ["If yes, jumping is done by pressing Down/S when upside down. If no, jumping is always done by pressing W or Up."]]
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/SFXSlider/SFXSlider" to="." method="_on_sfx_slider_value_changed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]
