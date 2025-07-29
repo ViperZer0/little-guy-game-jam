@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Little Guy Game Jam 2025"
-run/main_scene="res://scene/hello_world/hello_world.tscn"
+run/main_scene="uid://by0csoymkqgv0"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://resource/image/icon.svg"
 
