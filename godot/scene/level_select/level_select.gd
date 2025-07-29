@@ -12,3 +12,6 @@ func create_button_for_level(level: int) -> Button:
 	button.text = str(level + 1)
 	button.pressed.connect(func (): LevelManager.load_level(level))
 	return button
+
+func _on_back_button_pressed() -> void:
+	SceneManager.switch_to_previous_scene()
