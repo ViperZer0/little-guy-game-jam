@@ -1,0 +1,144 @@
+[gd_scene load_steps=13 format=3 uid="uid://2hb57vlg0pxp"]
+
+[ext_resource type="Script" uid="uid://c5c21whjq4mnd" path="res://scene/level_1/level_1.gd" id="1_u808y"]
+[ext_resource type="Texture2D" uid="uid://cdjmogt01ek4e" path="res://resource/image/level_1_0000.png" id="2_10khq"]
+[ext_resource type="Texture2D" uid="uid://ct7bvycn7gcag" path="res://resource/image/level_1_0001.png" id="3_kfne5"]
+[ext_resource type="Script" uid="uid://mwgdmfugm5vu" path="res://src/toggle_animated_sprite.gd" id="4_t1ik2"]
+[ext_resource type="PackedScene" uid="uid://bhkpq1h8bb5ni" path="res://component/player/player.tscn" id="5_o3apc"]
+[ext_resource type="PackedScene" uid="uid://ng1kl8h3q7qu" path="res://component/player_touch_detector/player_touch_detector.tscn" id="6_etsli"]
+[ext_resource type="Script" uid="uid://bsvs1txs1728o" path="res://src/typerwriter_label.gd" id="7_68kpq"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_oaqiu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_10khq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_kfne5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_xvrcc"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_nc8ox"]
+normal = Vector2(0, 1)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_oaqiu"]
+normal = Vector2(1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_tpyd0"]
+normal = Vector2(-1, 0)
+
+[node name="Level1" type="Node2D"]
+script = ExtResource("1_u808y")
+
+[node name="Background" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_oaqiu")
+frame_progress = 0.272432
+centered = false
+script = ExtResource("4_t1ik2")
+
+[node name="Floor" type="StaticBody2D" parent="."]
+position = Vector2(961, 746)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+shape = SubResource("WorldBoundaryShape2D_xvrcc")
+
+[node name="Ceiling" type="StaticBody2D" parent="."]
+position = Vector2(949, 261)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ceiling"]
+shape = SubResource("WorldBoundaryShape2D_nc8ox")
+
+[node name="WallLeft" type="StaticBody2D" parent="."]
+position = Vector2(142, 530)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallLeft"]
+shape = SubResource("WorldBoundaryShape2D_oaqiu")
+
+[node name="WallRight" type="StaticBody2D" parent="."]
+position = Vector2(1784, 520)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallRight"]
+shape = SubResource("WorldBoundaryShape2D_tpyd0")
+
+[node name="Player" parent="." instance=ExtResource("5_o3apc")]
+position = Vector2(282, 671)
+
+[node name="Player2" parent="." instance=ExtResource("5_o3apc")]
+position = Vector2(1601, 358)
+player = 1
+upside_down = true
+
+[node name="PlayerTouchDetector" parent="." instance=ExtResource("6_etsli")]
+
+[node name="WASDInstructions" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 182.0
+offset_top = 854.0
+offset_right = 603.0
+offset_bottom = 913.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"LabelSmall"
+text = "Use WASD to move around"
+script = ExtResource("7_68kpq")
+letters_per_second = 40.0
+metadata/_custom_type_script = "uid://bsvs1txs1728o"
+
+[node name="ArrowInstructions" type="Label" parent="."]
+unique_name_in_owner = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1260.0
+offset_top = 146.0
+offset_right = 1839.0
+offset_bottom = 205.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"LabelSmall"
+text = "Use the arrow keys to move around"
+script = ExtResource("7_68kpq")
+letters_per_second = 40.0
+metadata/_custom_type_script = "uid://bsvs1txs1728o"
+
+[node name="SpaceInstructions" type="Label" parent="."]
+unique_name_in_owner = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 801.0
+offset_top = 857.0
+offset_right = 1380.0
+offset_bottom = 916.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"LabelSmall"
+text = "Press SPACE to switch characters"
+script = ExtResource("7_68kpq")
+letters_per_second = 40.0
+metadata/_custom_type_script = "uid://bsvs1txs1728o"
+
+[node name="Blurb" type="Label" parent="."]
+offset_left = 159.0
+offset_top = 51.0
+offset_right = 1050.0
+offset_bottom = 172.0
+text = "In every world we find each other.
+When we touch, everything changes."
+script = ExtResource("7_68kpq")
+letters_per_second = 100.0
+metadata/_custom_type_script = "uid://bsvs1txs1728o"
