@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://4dm32nm5m4h6"]
+[gd_scene load_steps=3 format=3 uid="uid://4dm32nm5m4h6"]
 
 [ext_resource type="Script" uid="uid://pqqwyn35lomn" path="res://scene/solo_or_coop_picker/solo_or_coop_picker.gd" id="1_pd6sy"]
+[ext_resource type="Script" uid="uid://da0xs16dtxehk" path="res://component/sfx_button/sfx_button.gd" id="2_e6wit"]
 
 [node name="SoloOrCoopPicker" type="Control"]
 layout_mode = 3
@@ -53,11 +54,15 @@ alignment = 1
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Solo"
+script = ExtResource("2_e6wit")
+metadata/_custom_type_script = "uid://da0xs16dtxehk"
 
 [node name="CoopButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Co-op"
+script = ExtResource("2_e6wit")
+metadata/_custom_type_script = "uid://da0xs16dtxehk"
 
 [node name="ModeDescription" type="Label" parent="MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
@@ -69,6 +74,8 @@ autowrap_mode = 2
 [node name="BackButton" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Back"
+script = ExtResource("2_e6wit")
+metadata/_custom_type_script = "uid://da0xs16dtxehk"
 
 [connection signal="mouse_entered" from="MarginContainer/VBoxContainer/HBoxContainer/SoloButton" to="." method="_on_solo_button_mouse_entered"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/SoloButton" to="." method="_on_solo_button_pressed"]

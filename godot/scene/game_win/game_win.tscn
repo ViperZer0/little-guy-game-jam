@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://bxqgno1dsw1cu"]
+[gd_scene load_steps=9 format=3 uid="uid://bxqgno1dsw1cu"]
 
 [ext_resource type="Script" uid="uid://cdkknh0qx8pbb" path="res://scene/game_win/game_win.gd" id="1_7uvps"]
 [ext_resource type="Script" uid="uid://bsvs1txs1728o" path="res://src/typerwriter_label.gd" id="1_8clsq"]
 [ext_resource type="PackedScene" uid="uid://bhkpq1h8bb5ni" path="res://component/player/player.tscn" id="2_5a7ix"]
+[ext_resource type="Script" uid="uid://da0xs16dtxehk" path="res://component/sfx_button/sfx_button.gd" id="3_k08j3"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_8clsq"]
 
@@ -86,6 +87,8 @@ size_flags_vertical = 3
 layout_mode = 2
 text = "Back to Title
 "
+script = ExtResource("3_k08j3")
+metadata/_custom_type_script = "uid://da0xs16dtxehk"
 
 [node name="Player" parent="." instance=ExtResource("2_5a7ix")]
 position = Vector2(249, 776)

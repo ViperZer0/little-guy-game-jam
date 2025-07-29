@@ -7,8 +7,8 @@ func _ready() -> void:
 		var button = create_button_for_level(level)
 		level_grid.add_child(button)
 
-func create_button_for_level(level: int) -> Button:
-	var button = Button.new()
+func create_button_for_level(level: int) -> SFXButton:
+	var button = SFXButton.new()
 	button.text = str(level + 1)
 	button.pressed.connect(func (): LevelManager.load_level(level))
 	return button

@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dj0aik8qev8kl"]
+[gd_scene load_steps=3 format=3 uid="uid://dj0aik8qev8kl"]
 
 [ext_resource type="Script" uid="uid://f6w88tgao25c" path="res://scene/level_select/level_select.gd" id="1_llxmo"]
+[ext_resource type="Script" uid="uid://da0xs16dtxehk" path="res://component/sfx_button/sfx_button.gd" id="2_nyy13"]
 
 [node name="LevelSelect" type="Control"]
 layout_mode = 3
@@ -54,5 +55,7 @@ columns = 5
 [node name="BackButton" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Back"
+script = ExtResource("2_nyy13")
+metadata/_custom_type_script = "uid://da0xs16dtxehk"
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]

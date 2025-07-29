@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://wh0awdtwddlt"]
+[gd_scene load_steps=4 format=3 uid="uid://wh0awdtwddlt"]
 
 [ext_resource type="Script" uid="uid://cccdyrsbe6al5" path="res://scene/settings_menu/settings_menu.gd" id="1_6wtn1"]
 [ext_resource type="PackedScene" uid="uid://bp2lbmk4p7xtm" path="res://component/selector/selector.tscn" id="1_shkjk"]
+[ext_resource type="Script" uid="uid://da0xs16dtxehk" path="res://component/sfx_button/sfx_button.gd" id="3_mlwk7"]
 
 [node name="SettingsMenu" type="Control"]
 layout_mode = 3
@@ -129,6 +130,8 @@ autowrap_mode = 2
 [node name="BackButton" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Back"
+script = ExtResource("3_mlwk7")
+metadata/_custom_type_script = "uid://da0xs16dtxehk"
 
 [connection signal="mouse_entered" from="MarginContainer/VBoxContainer/EnableAnimation" to="." method="set_description_text" binds= ["Toggles animation flicker"]]
 [connection signal="selected_option_changed" from="MarginContainer/VBoxContainer/EnableAnimation/EnableAnimationSelector" to="." method="_on_enable_animation_selector_selected_option_changed"]
