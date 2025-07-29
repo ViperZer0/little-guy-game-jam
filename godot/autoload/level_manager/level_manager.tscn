@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://csqsuwtim6r4v"]
+
+[ext_resource type="Script" uid="uid://sljmd1pqfub4" path="res://autoload/level_manager/level_manager.gd" id="1_7j12w"]
+
+[node name="LevelManager" type="Node"]
+script = ExtResource("1_7j12w")
+level_paths = Array[StringName]([&"res://scene/level_1/level_1.tscn"])

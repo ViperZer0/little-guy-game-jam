@@ -20,6 +20,7 @@ config/icon="res://resource/image/icon.svg"
 SceneManager="*res://autoload/scene_manager/scene_manager.tscn"
 SettingsManager="*res://autoload/settings_manager/settings_manager.tscn"
 PlayerController="*res://autoload/player_controller/player_controller.tscn"
+LevelManager="*res://autoload/level_manager/level_manager.tscn"
 
 [display]
 
