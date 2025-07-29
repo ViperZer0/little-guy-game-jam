@@ -22,7 +22,7 @@ func _on_scene_tree_process_frame() -> void:
 		settings.animation_flicker_changed.connect(_on_animation_flicker_changed)
 		pause = !settings.animation_flicker
 		# Now we can unsubscribe and check tf out
-		(Engine.get_main_loop() as SceneTree).node_added.disconnect(_on_scene_tree_process_frame)
+		tree.process_frame.disconnect(_on_scene_tree_process_frame)
 
 func _on_animation_flicker_changed(to: bool) -> void:
 	print("Updating animation flicker!")
