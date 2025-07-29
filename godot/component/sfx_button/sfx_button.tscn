@@ -1,18 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://cuapds8ncop0q"]
+[gd_scene load_steps=2 format=3 uid="uid://cuapds8ncop0q"]
 
 [ext_resource type="Script" uid="uid://da0xs16dtxehk" path="res://component/sfx_button/sfx_button.gd" id="1_8i1np"]
-[ext_resource type="AudioStream" uid="uid://gmvatiykpry4" path="res://component/sfx_button/click_press.ogg" id="1_qgrxv"]
-[ext_resource type="AudioStream" uid="uid://d3gsyijhj2j58" path="res://component/sfx_button/click_release.ogg" id="2_8i1np"]
 
 [node name="SfxButton" type="Button"]
 script = ExtResource("1_8i1np")
-
-[node name="ClickPlayer" type="AudioStreamPlayer" parent="."]
-unique_name_in_owner = true
-stream = ExtResource("1_qgrxv")
-bus = &"SFX"
-
-[node name="ReleasePlayer" type="AudioStreamPlayer" parent="."]
-unique_name_in_owner = true
-stream = ExtResource("2_8i1np")
-bus = &"SFX"

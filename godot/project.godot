@@ -22,6 +22,7 @@ SettingsManager="*res://autoload/settings_manager/settings_manager.tscn"
 PlayerController="*res://autoload/player_controller/player_controller.tscn"
 LevelManager="*res://autoload/level_manager/level_manager.tscn"
 BgmPlayer="*res://autoload/bgm_player/bgm_player.tscn"
+ButtonSFXPlayer="*res://autoload/button_sfx_player/button_sfx_player.tscn"
 
 [display]
 

@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://b1s7lkdsayjba"]
+
+[ext_resource type="Script" uid="uid://csgc7fvdf8cf8" path="res://autoload/button_sfx_player/button_sfx_player.gd" id="1_exkm5"]
+[ext_resource type="AudioStream" uid="uid://gmvatiykpry4" path="res://autoload/button_sfx_player/click_press.ogg" id="1_i5eji"]
+[ext_resource type="AudioStream" uid="uid://d3gsyijhj2j58" path="res://autoload/button_sfx_player/click_release.ogg" id="2_uo503"]
+
+[node name="ButtonSfxPlayer" type="Node"]
+script = ExtResource("1_exkm5")
+
+[node name="ClickPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_i5eji")
+bus = &"SFX"
+
+[node name="ReleasePlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_uo503")
+bus = &"SFX"
