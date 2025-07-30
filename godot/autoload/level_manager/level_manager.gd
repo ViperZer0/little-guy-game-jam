@@ -42,6 +42,10 @@ func load_level(level: int) -> void:
 	current_level = level
 	SceneManager.switch_scenes(node)
 
+func restart_level() -> void:
+	queue_load_level(current_level)
+	load_level(current_level)
+
 func queue_load_next_level() -> void:
 	queue_load_level(current_level + 1)
 
