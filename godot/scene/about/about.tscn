@@ -49,7 +49,8 @@ Player jump sound effect is from [url=https://pixabay.com/sound-effects/cartoon-
 
 Mouse click sound effect is from [url=https://pixabay.com/sound-effects/mouse-click-153941/]Pixabay[/url] by SoundReality.
 
-This game is dedicated to my boyfriend, who brings me joy and makes me proud of what I make."
+This game is dedicated to my boyfriend, who brings me joy and makes me proud of what I make.
+I love you."
 horizontal_alignment = 1
 
 [node name="Button" type="Button" parent="MarginContainer/VBoxContainer"]
