@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://phr6wt8b7ekh"]
+[gd_scene load_steps=18 format=3 uid="uid://phr6wt8b7ekh"]
 
 [ext_resource type="Texture2D" uid="uid://bl0jm0jxk6dit" path="res://scene/levels/level_3/level_3_0000.png" id="1_jiqol"]
 [ext_resource type="Texture2D" uid="uid://bpfq4mqxxmct0" path="res://scene/levels/level_3/level_3_0001.png" id="2_kfw3b"]
@@ -35,6 +35,18 @@ animations = [{
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4pe1d"]
 size = Vector2(176, 130)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b2uqg"]
+size = Vector2(112, 103)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pve4f"]
+size = Vector2(151, 80)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eph7a"]
+size = Vector2(148, 103)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_grofj"]
+size = Vector2(173, 88)
 
 [node name="Level3" type="Node2D"]
 
@@ -105,7 +117,8 @@ script = ExtResource("4_kfw3b")
 metadata/_custom_type_script = "uid://duy8vsisms73f"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Spikes/DeathZone3"]
-shape = SubResource("RectangleShape2D_4pe1d")
+position = Vector2(-7, -13.5)
+shape = SubResource("RectangleShape2D_b2uqg")
 
 [node name="DeathZone4" type="Area2D" parent="Spikes"]
 position = Vector2(1040, 668)
@@ -115,7 +128,8 @@ script = ExtResource("4_kfw3b")
 metadata/_custom_type_script = "uid://duy8vsisms73f"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Spikes/DeathZone4"]
-shape = SubResource("RectangleShape2D_4pe1d")
+position = Vector2(-10.5, -2)
+shape = SubResource("RectangleShape2D_pve4f")
 
 [node name="DeathZone5" type="Area2D" parent="Spikes"]
 position = Vector2(1035, 236)
@@ -125,7 +139,8 @@ script = ExtResource("4_kfw3b")
 metadata/_custom_type_script = "uid://duy8vsisms73f"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Spikes/DeathZone5"]
-shape = SubResource("RectangleShape2D_4pe1d")
+position = Vector2(-2, 11.5)
+shape = SubResource("RectangleShape2D_eph7a")
 
 [node name="DeathZone6" type="Area2D" parent="Spikes"]
 position = Vector2(1434, 335)
@@ -135,7 +150,8 @@ script = ExtResource("4_kfw3b")
 metadata/_custom_type_script = "uid://duy8vsisms73f"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Spikes/DeathZone6"]
-shape = SubResource("RectangleShape2D_4pe1d")
+position = Vector2(-1.5, 14)
+shape = SubResource("RectangleShape2D_grofj")
 
 [node name="Player" parent="." instance=ExtResource("5_4pe1d")]
 position = Vector2(137, 936)
