@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://phr6wt8b7ekh"]
+[gd_scene load_steps=23 format=3 uid="uid://phr6wt8b7ekh"]
 
 [ext_resource type="Texture2D" uid="uid://bl0jm0jxk6dit" path="res://scene/levels/level_3/level_3_0000.png" id="1_jiqol"]
 [ext_resource type="Texture2D" uid="uid://bpfq4mqxxmct0" path="res://scene/levels/level_3/level_3_0001.png" id="2_kfw3b"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bhkpq1h8bb5ni" path="res://component/player/player.tscn" id="5_4pe1d"]
 [ext_resource type="PackedScene" uid="uid://ng1kl8h3q7qu" path="res://component/player_touch_detector/player_touch_detector.tscn" id="6_b2uqg"]
 [ext_resource type="PackedScene" uid="uid://dy6frmqfv11u1" path="res://component/next_level_loader/next_level_loader.tscn" id="7_pve4f"]
+[ext_resource type="Script" uid="uid://bsvs1txs1728o" path="res://src/typerwriter_label.gd" id="8_pve4f"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_b2uqg"]
 
@@ -47,6 +48,18 @@ size = Vector2(148, 103)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_grofj"]
 size = Vector2(173, 88)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nwhny"]
+size = Vector2(1378, 232)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v868j"]
+size = Vector2(981, 161)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nifw1"]
+size = Vector2(986, 163)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aqvcd"]
+size = Vector2(549.5, 106)
 
 [node name="Level3" type="Node2D"]
 
@@ -164,5 +177,37 @@ upside_down = true
 [node name="PlayerTouchDetector" parent="." instance=ExtResource("6_b2uqg")]
 
 [node name="NextLevelLoader" parent="." instance=ExtResource("7_pve4f")]
+
+[node name="LowerStairs" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LowerStairs"]
+position = Vector2(1225, 965)
+shape = SubResource("RectangleShape2D_nwhny")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="LowerStairs"]
+position = Vector2(1423.5, 772.5)
+shape = SubResource("RectangleShape2D_v868j")
+
+[node name="UpperStairs" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="UpperStairs"]
+position = Vector2(1416, 113)
+shape = SubResource("RectangleShape2D_nifw1")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="UpperStairs"]
+position = Vector2(1597.25, 243)
+shape = SubResource("RectangleShape2D_aqvcd")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TypewriterLabel" type="Label" parent="CanvasLayer"]
+offset_left = 125.0
+offset_top = 522.0
+offset_right = 946.0
+offset_bottom = 581.0
+text = "Some worlds try to keep us apart."
+script = ExtResource("8_pve4f")
+letters_per_second = 40.0
+metadata/_custom_type_script = "uid://bsvs1txs1728o"
 
 [connection signal="players_collided" from="PlayerTouchDetector" to="NextLevelLoader" method="load_next_level"]
