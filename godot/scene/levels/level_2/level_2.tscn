@@ -1,0 +1,114 @@
+[gd_scene load_steps=15 format=3 uid="uid://dwm088pquh0xn"]
+
+[ext_resource type="Texture2D" uid="uid://t6vjqvfd0rqj" path="res://resource/image/level_border_0000.png" id="1_ehq7g"]
+[ext_resource type="Texture2D" uid="uid://dqsvw6h51n87h" path="res://resource/image/level_border_0001.png" id="2_434tg"]
+[ext_resource type="Script" uid="uid://mwgdmfugm5vu" path="res://src/toggle_animated_sprite.gd" id="3_6a56e"]
+[ext_resource type="PackedScene" uid="uid://dttiuxh74sari" path="res://component/platform/platform.tscn" id="4_434tg"]
+[ext_resource type="Script" uid="uid://bsvs1txs1728o" path="res://src/typerwriter_label.gd" id="4_m23nj"]
+[ext_resource type="PackedScene" uid="uid://bhkpq1h8bb5ni" path="res://component/player/player.tscn" id="5_6a56e"]
+[ext_resource type="PackedScene" uid="uid://ng1kl8h3q7qu" path="res://component/player_touch_detector/player_touch_detector.tscn" id="6_5fo61"]
+[ext_resource type="PackedScene" uid="uid://dy6frmqfv11u1" path="res://component/next_level_loader/next_level_loader.tscn" id="7_78ibk"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5fo61"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ehq7g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_434tg")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="Curve2D" id="Curve2D_6a56e"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 400, 700, 0, 0, 0, 0, 1520, 700, 0, 0, 0, 0, 400, 700)
+}
+point_count = 3
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_78ibk"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_434tg"]
+normal = Vector2(0, 1)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_6a56e"]
+normal = Vector2(1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_5fo61"]
+normal = Vector2(-1, 0)
+
+[node name="Level2" type="Node2D"]
+
+[node name="Border" type="AnimatedSprite2D" parent="."]
+position = Vector2(960, 540)
+sprite_frames = SubResource("SpriteFrames_5fo61")
+frame_progress = 0.694365
+script = ExtResource("3_6a56e")
+metadata/_custom_type_script = "uid://mwgdmfugm5vu"
+
+[node name="Background" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Panel" type="Panel" parent="Background"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"Background"
+
+[node name="Foreground" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="Foreground"]
+offset_left = 130.0
+offset_top = 150.0
+offset_right = 885.0
+offset_bottom = 209.0
+text = "Some worlds bring us together."
+script = ExtResource("4_m23nj")
+letters_per_second = 40.0
+metadata/_custom_type_script = "uid://bsvs1txs1728o"
+
+[node name="Platform" parent="." node_paths=PackedStringArray("path") instance=ExtResource("4_434tg")]
+position = Vector2(380, 702)
+path = NodePath("../Path2D")
+path_duration = 10.0
+
+[node name="Path2D" type="Path2D" parent="."]
+position = Vector2(0, 153)
+curve = SubResource("Curve2D_6a56e")
+
+[node name="BorderCollider" type="StaticBody2D" parent="."]
+
+[node name="Floor" type="CollisionShape2D" parent="BorderCollider"]
+position = Vector2(100, 989)
+shape = SubResource("WorldBoundaryShape2D_78ibk")
+
+[node name="Ceiling" type="CollisionShape2D" parent="BorderCollider"]
+position = Vector2(96, 81)
+shape = SubResource("WorldBoundaryShape2D_434tg")
+
+[node name="WallLeft" type="CollisionShape2D" parent="BorderCollider"]
+position = Vector2(76, 941)
+shape = SubResource("WorldBoundaryShape2D_6a56e")
+
+[node name="WallRight" type="CollisionShape2D" parent="BorderCollider"]
+position = Vector2(1835, 468)
+shape = SubResource("WorldBoundaryShape2D_5fo61")
+
+[node name="Player" parent="." instance=ExtResource("5_6a56e")]
+position = Vector2(288, 924)
+
+[node name="Player2" parent="." instance=ExtResource("5_6a56e")]
+position = Vector2(1629, 179)
+player = 1
+upside_down = true
+
+[node name="PlayerTouchDetector" parent="." instance=ExtResource("6_5fo61")]
+
+[node name="NextLevelLoader" parent="." instance=ExtResource("7_78ibk")]
+
+[connection signal="players_collided" from="PlayerTouchDetector" to="NextLevelLoader" method="load_next_level"]

@@ -1,0 +1,47 @@
+[gd_scene load_steps=8 format=3 uid="uid://dttiuxh74sari"]
+
+[ext_resource type="Texture2D" uid="uid://clgqgv4qqgnyu" path="res://component/platform/platform_0000.png" id="1_j15ll"]
+[ext_resource type="Script" uid="uid://hc08fiq5fppg" path="res://component/platform/platform.gd" id="1_kckoo"]
+[ext_resource type="Texture2D" uid="uid://ylwwkevl4dqb" path="res://component/platform/platform_0001.png" id="2_kckoo"]
+[ext_resource type="Script" uid="uid://mwgdmfugm5vu" path="res://src/toggle_animated_sprite.gd" id="3_4tf6f"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kckoo"]
+size = Vector2(330, 120)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4tf6f"]
+radius = 59.1354
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_02gk4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_j15ll")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_kckoo")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="Platform" type="AnimatableBody2D"]
+script = ExtResource("1_kckoo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_kckoo")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(-168, 0)
+shape = SubResource("CircleShape2D_4tf6f")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
+position = Vector2(165, 0)
+shape = SubResource("CircleShape2D_4tf6f")
+
+[node name="ToggleAnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_02gk4")
+frame = 1
+frame_progress = 0.844198
+script = ExtResource("3_4tf6f")
+metadata/_custom_type_script = "uid://mwgdmfugm5vu"
