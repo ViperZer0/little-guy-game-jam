@@ -17,6 +17,7 @@ script = ExtResource("1_b1rhm")
 scene_path = &"res://scene/settings_menu/settings_menu.tscn"
 
 [node name="LoadAbout" parent="." instance=ExtResource("2_ar5m3")]
+scene_path = &"res://scene/about/about.tscn"
 
 [node name="LoadPlayGame" parent="." instance=ExtResource("2_ar5m3")]
 scene_path = &"res://scene/solo_or_coop_picker/solo_or_coop_picker.tscn"
