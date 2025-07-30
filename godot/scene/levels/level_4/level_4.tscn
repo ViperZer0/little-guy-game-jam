@@ -1,0 +1,110 @@
+[gd_scene load_steps=12 format=3 uid="uid://dsnrmdqbuxrfi"]
+
+[ext_resource type="Texture2D" uid="uid://cbiey2540gl34" path="res://scene/levels/level_4/level_4_0000.png" id="1_s0kvo"]
+[ext_resource type="Script" uid="uid://bsvs1txs1728o" path="res://src/typerwriter_label.gd" id="1_wyoub"]
+[ext_resource type="Texture2D" uid="uid://dx2iml182x5nf" path="res://scene/levels/level_4/level_4_0001.png" id="2_d1je2"]
+[ext_resource type="Script" uid="uid://mwgdmfugm5vu" path="res://src/toggle_animated_sprite.gd" id="3_hfi2u"]
+[ext_resource type="Script" uid="uid://duy8vsisms73f" path="res://component/death_zone/death_zone.gd" id="4_hfi2u"]
+[ext_resource type="PackedScene" uid="uid://bhkpq1h8bb5ni" path="res://component/player/player.tscn" id="5_tfge4"]
+[ext_resource type="PackedScene" uid="uid://ng1kl8h3q7qu" path="res://component/player_touch_detector/player_touch_detector.tscn" id="6_451bq"]
+[ext_resource type="PackedScene" uid="uid://dy6frmqfv11u1" path="res://component/next_level_loader/next_level_loader.tscn" id="7_wyoub"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tfge4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_s0kvo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_d1je2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_451bq"]
+size = Vector2(1329, 79)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hfi2u"]
+size = Vector2(597.5, 423)
+
+[node name="Level4" type="Node2D"]
+
+[node name="Background" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Panel" type="Panel" parent="Background"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"Background"
+
+[node name="Foreground" type="CanvasLayer" parent="."]
+
+[node name="TypewriterLabel" type="Label" parent="Foreground"]
+offset_left = 17.0
+offset_top = 194.0
+offset_right = 1166.0
+offset_bottom = 253.0
+text = "But in the end, we always find each other again."
+script = ExtResource("1_wyoub")
+letters_per_second = 40.0
+metadata/_custom_type_script = "uid://bsvs1txs1728o"
+
+[node name="ToggleAnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_tfge4")
+frame_progress = 0.130398
+centered = false
+script = ExtResource("3_hfi2u")
+metadata/_custom_type_script = "uid://mwgdmfugm5vu"
+
+[node name="Spikes" type="Node" parent="."]
+
+[node name="DeathZone" type="Area2D" parent="Spikes"]
+collision_layer = 0
+collision_mask = 6
+script = ExtResource("4_hfi2u")
+metadata/_custom_type_script = "uid://duy8vsisms73f"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spikes/DeathZone"]
+position = Vector2(654.5, 29.5)
+shape = SubResource("RectangleShape2D_451bq")
+
+[node name="DeathZone2" type="Area2D" parent="Spikes"]
+collision_layer = 0
+collision_mask = 6
+script = ExtResource("4_hfi2u")
+metadata/_custom_type_script = "uid://duy8vsisms73f"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spikes/DeathZone2"]
+position = Vector2(1268, 1039)
+shape = SubResource("RectangleShape2D_451bq")
+
+[node name="Ground" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
+position = Vector2(303.25, 863)
+shape = SubResource("RectangleShape2D_hfi2u")
+
+[node name="Ground2" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground2"]
+position = Vector2(1630, 190)
+shape = SubResource("RectangleShape2D_hfi2u")
+
+[node name="Player" parent="." instance=ExtResource("5_tfge4")]
+position = Vector2(80, 588)
+
+[node name="Player2" parent="." instance=ExtResource("5_tfge4")]
+position = Vector2(1837, 505)
+player = 1
+upside_down = true
+
+[node name="PlayerTouchDetector" parent="." instance=ExtResource("6_451bq")]
+
+[node name="NextLevelLoader" parent="." instance=ExtResource("7_wyoub")]
+
+[connection signal="players_collided" from="PlayerTouchDetector" to="NextLevelLoader" method="load_next_level"]
