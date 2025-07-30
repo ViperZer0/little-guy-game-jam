@@ -40,14 +40,16 @@ layout_mode = 2
 layout_mode = 2
 size_flags_vertical = 3
 bbcode_enabled = true
-text = "Made by Weedleeedle for the [url=https://itch.io/jam/little-guy-game-jam]Little Guy Game Jam[/url]
+text = "Made by Weedleeedle for the [url=https://itch.io/jam/little-guy-game-jam]Little Guy Game Jam[/url].
 
 Background music is \"Almost Bliss\" by Kevin MacLeod ([url=http://incompetech.com]incompetech.com[/url])
-Licensed under [url=http://creativecommons.org/licenses/by/4.0/]Creative Commons: By Attribution 4.0 License[/url]
+Licensed under [url=http://creativecommons.org/licenses/by/4.0/]Creative Commons: By Attribution 4.0 License[/url].
 
-Player jump sound effect is from [url=https://pixabay.com/sound-effects/cartoon-jump-6462/]Pixabay[/url] by Bastianhallo
+Player jump sound effect is from [url=https://pixabay.com/sound-effects/cartoon-jump-6462/]Pixabay[/url] by Bastianhallo.
 
-Mouse click sound effect is from [url=https://pixabay.com/sound-effects/mouse-click-153941/]Pixabay[/url] by SoundReality"
+Mouse click sound effect is from [url=https://pixabay.com/sound-effects/mouse-click-153941/]Pixabay[/url] by SoundReality.
+
+This game is dedicated to my boyfriend, who brings me joy and makes me proud of what I make."
 horizontal_alignment = 1
 
 [node name="Button" type="Button" parent="MarginContainer/VBoxContainer"]
