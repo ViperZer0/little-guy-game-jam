@@ -41,6 +41,9 @@ def build(build_name: str, do_clean = False) -> None:
 	if build_name == 'web':
 		output_file_name = 'index.html'
 
+	if build_name.lower().startswith('win'):
+		output_file_name = output_file_name + '.exe'
+
 	output_dir = os.path.realpath(os.path.join(export_dir, build_name))
 	output_file = os.path.realpath(os.path.join(export_dir, build_name, output_file_name))
 
