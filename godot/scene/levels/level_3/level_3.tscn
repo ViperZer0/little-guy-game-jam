@@ -92,7 +92,7 @@ shape = SubResource("WorldBoundaryShape2D_eph7a")
 position = Vector2(1835, 468)
 shape = SubResource("WorldBoundaryShape2D_grofj")
 
-[node name="ToggleAnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="BorderSprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(960, 540)
 sprite_frames = SubResource("SpriteFrames_wl7wy")
 frame = 1

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://m15n5ioe2m2m"
-path="res://.godot/imported/level_1_0000.png-9adf122648f9e4353f6bf1dc31b43e0b.ctex"
+uid="uid://dps68271ssg75"
+path="res://.godot/imported/player_body_hug_0005.png-1bdc6d0cb6fee79d92c7f9dbd259dc9a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scene/levels/level_1/level_1_0000.png"
-dest_files=["res://.godot/imported/level_1_0000.png-9adf122648f9e4353f6bf1dc31b43e0b.ctex"]
+source_file="res://component/player/hug_anim/player_body_hug_0005.png"
+dest_files=["res://.godot/imported/player_body_hug_0005.png-1bdc6d0cb6fee79d92c7f9dbd259dc9a.ctex"]
 
 [params]
 

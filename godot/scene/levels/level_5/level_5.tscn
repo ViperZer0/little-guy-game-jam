@@ -43,10 +43,10 @@ size = Vector2(908, 48)
 
 [node name="Level5" type="Node2D"]
 
-[node name="Background" type="CanvasLayer" parent="."]
+[node name="BackgroundLayer" type="CanvasLayer" parent="."]
 layer = -1
 
-[node name="Panel" type="Panel" parent="Background"]
+[node name="Panel" type="Panel" parent="BackgroundLayer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -66,7 +66,7 @@ script = ExtResource("1_8gppd")
 letters_per_second = 40.0
 metadata/_custom_type_script = "uid://bsvs1txs1728o"
 
-[node name="ToggleAnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="Background" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_sds2n")
 frame_progress = 0.360868
 centered = false

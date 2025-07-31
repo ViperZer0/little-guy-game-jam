@@ -14,6 +14,9 @@ enum Direction {
 		upside_down = value
 		_set_upside_down(value)
 
+## Set this to false to disable input handling/physics/etc.
+@export var process: bool = true
+
 @onready var torso_sprite: AnimatedSprite2D = %PlayerTorso
 @onready var head_sprite: AnimatedSprite2D = %PlayerBody
 @onready var selection_arrow_sprite: Sprite2D = %SelectionArrow
@@ -21,6 +24,8 @@ enum Direction {
 @onready var selection_arrow_timer: Timer = %SelectionArrowTimeout
 @onready var player_detector: Area2D = %PlayerDetector
 @onready var jump_audio_player: AudioStreamPlayer2D = %JumpAudio
+@onready var hug_anchor: Node2D = %HugAnchor
+@onready var hug_anchor_offset = hug_anchor.position.x
 
 ## This signal is fired when the two players touched!
 signal players_collided()
@@ -59,6 +64,9 @@ func _ready() -> void:
 	_set_upside_down(upside_down)
 
 func _physics_process(delta: float) -> void:
+	if !process:
+		return
+
 	# Are we going back down? If so we want to move faster i think.
 	var extra_accel: float = 1.0
 	if velocity.y * (-1 if upside_down else 1) > 0.0:
@@ -83,11 +91,11 @@ func _physics_process(delta: float) -> void:
 		velocity.x = (_get_action_strength(_get_direction_name(Direction.RIGHT)) - _get_action_strength(_get_direction_name(Direction.LEFT))) * delta * move_speed
 
 	if (_get_action_strength(_get_direction_name(Direction.RIGHT)) - _get_action_strength(_get_direction_name(Direction.LEFT))) > 0.0:
-		head_sprite.flip_h = false
-		torso_sprite.flip_h = false
+		flip_horiz(false)
+		hug_anchor.position.x = hug_anchor_offset
 	elif (_get_action_strength(_get_direction_name(Direction.RIGHT)) - _get_action_strength(_get_direction_name(Direction.LEFT))) < 0.0:
-		head_sprite.flip_h = true
-		torso_sprite.flip_h = true
+		flip_horiz(true)
+		hug_anchor.position.x = -hug_anchor_offset
 
 	move_and_slide()
 
@@ -183,3 +191,22 @@ func show_selection_arrow() -> void:
 	selection_arrow_timer.start()
 	await selection_arrow_timer.timeout
 	selection_arrow_sprite.hide()
+
+func hug() -> void:
+	torso_sprite.play("hug")
+	head_sprite.play("hug")
+	await torso_sprite.animation_finished
+	torso_sprite.play("hug_end")
+	head_sprite.play("hug_end")
+
+func flip_horiz(flip: bool) -> void:
+	head_sprite.flip_h = flip
+	torso_sprite.flip_h = flip
+	if flip:
+		hug_anchor.position.x = -hug_anchor_offset
+	else:
+		hug_anchor.position.x = hug_anchor_offset
+
+
+
+
