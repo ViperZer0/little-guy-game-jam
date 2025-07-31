@@ -141,6 +141,6 @@ upside_down = true
 
 [node name="Spinner" parent="." instance=ExtResource("8_gkb1r")]
 position = Vector2(964, 556)
-spin_rate = 25.0
+spin_rate = 15.0
 
 [connection signal="players_collided" from="PlayerTouchDetector" to="NextLevelLoader" method="load_next_level"]
