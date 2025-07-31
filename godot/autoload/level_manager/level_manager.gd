@@ -1,7 +1,7 @@
 extends Node
 
 ## List of all the levels in the correct order.
-@export var level_paths: Array[StringName]
+@export_file("*.tscn") var level_paths: Array[String]
 @export var game_win_path: StringName
 
 var current_level: int = 0
