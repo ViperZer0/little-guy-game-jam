@@ -1,5 +1,6 @@
-[gd_scene load_steps=16 format=3 uid="uid://dbprcr7fpee8r"]
+[gd_scene load_steps=17 format=3 uid="uid://dbprcr7fpee8r"]
 
+[ext_resource type="Script" uid="uid://bsvs1txs1728o" path="res://src/typerwriter_label.gd" id="1_8gppd"]
 [ext_resource type="Texture2D" uid="uid://iyy2mtx8efoc" path="res://scene/levels/level_5/level_5_0000.png" id="1_36a15"]
 [ext_resource type="Texture2D" uid="uid://b3yphiowaa253" path="res://scene/levels/level_5/level_5_0001.png" id="2_sndhx"]
 [ext_resource type="Script" uid="uid://mwgdmfugm5vu" path="res://src/toggle_animated_sprite.gd" id="3_t85pn"]
@@ -52,6 +53,18 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_type_variation = &"Background"
+
+[node name="Foreground" type="CanvasLayer" parent="."]
+
+[node name="TypewriterLabel" type="Label" parent="Foreground"]
+offset_left = 428.0
+offset_top = 160.0
+offset_right = 1472.0
+offset_bottom = 219.0
+text = "One way or another, we'll touch once again."
+script = ExtResource("1_8gppd")
+letters_per_second = 40.0
+metadata/_custom_type_script = "uid://bsvs1txs1728o"
 
 [node name="ToggleAnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_sds2n")
