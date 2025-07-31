@@ -62,7 +62,6 @@ func _physics_process(delta: float) -> void:
 	# Are we going back down? If so we want to move faster i think.
 	var extra_accel: float = 1.0
 	if velocity.y * (-1 if upside_down else 1) > 0.0:
-		print("Going back down!")
 		extra_accel = 2.0
 
 	# Move player according to gravity
