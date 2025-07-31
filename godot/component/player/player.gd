@@ -73,8 +73,15 @@ func _physics_process(delta: float) -> void:
 		jump_audio_player.play()
 		velocity.y = jump_velocity * (1 if upside_down else -1)
 
-	# Move side to side
-	velocity.x = (_get_action_strength(_get_direction_name(Direction.RIGHT)) - _get_action_strength(_get_direction_name(Direction.LEFT))) * delta * move_speed
+	# Basically, if we are NO longer controlling this character AND we are in the air, we want to preserve the player's left-right velocity.
+	# Effectively, if the player switches characters while in mid-air, we assume they want to keep moving that direction.
+	if PlayerController.is_solo() and PlayerController.currently_selected_character != player and not is_on_floor():
+		# Preserve existing x component for velocity
+		pass
+	else:
+		# If any of the conditions are NOT true, we only move with normal platformer controls.
+		# Move side to side
+		velocity.x = (_get_action_strength(_get_direction_name(Direction.RIGHT)) - _get_action_strength(_get_direction_name(Direction.LEFT))) * delta * move_speed
 
 	if (_get_action_strength(_get_direction_name(Direction.RIGHT)) - _get_action_strength(_get_direction_name(Direction.LEFT))) > 0.0:
 		head_sprite.flip_h = false
