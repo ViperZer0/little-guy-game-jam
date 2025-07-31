@@ -60,9 +60,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_type_variation = &"Background"
 
-[node name="Foreground" type="CanvasLayer" parent="."]
-
-[node name="Label" type="Label" parent="Foreground"]
+[node name="Label" type="Label" parent="."]
 offset_left = 130.0
 offset_top = 150.0
 offset_right = 885.0

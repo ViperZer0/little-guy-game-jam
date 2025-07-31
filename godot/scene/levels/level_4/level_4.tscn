@@ -42,10 +42,10 @@ normal = Vector2(-1, 0)
 
 [node name="Level4" type="Node2D"]
 
-[node name="BackgroundLayer" type="CanvasLayer" parent="."]
+[node name="Background" type="CanvasLayer" parent="."]
 layer = -1
 
-[node name="Panel" type="Panel" parent="BackgroundLayer"]
+[node name="Panel" type="Panel" parent="Background"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -53,9 +53,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_type_variation = &"Background"
 
-[node name="Foreground" type="CanvasLayer" parent="."]
-
-[node name="TypewriterLabel" type="Label" parent="Foreground"]
+[node name="TypewriterLabel" type="Label" parent="."]
 offset_left = 17.0
 offset_top = 194.0
 offset_right = 1166.0
@@ -65,7 +63,7 @@ script = ExtResource("1_wyoub")
 letters_per_second = 40.0
 metadata/_custom_type_script = "uid://bsvs1txs1728o"
 
-[node name="Background" type="AnimatedSprite2D" parent="."]
+[node name="Border" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_tfge4")
 frame_progress = 0.130398
 centered = false

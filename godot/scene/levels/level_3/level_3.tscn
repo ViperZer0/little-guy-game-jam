@@ -198,9 +198,7 @@ shape = SubResource("RectangleShape2D_nifw1")
 position = Vector2(1597.25, 243)
 shape = SubResource("RectangleShape2D_aqvcd")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="TypewriterLabel" type="Label" parent="CanvasLayer"]
+[node name="TypewriterLabel" type="Label" parent="."]
 offset_left = 125.0
 offset_top = 522.0
 offset_right = 946.0
