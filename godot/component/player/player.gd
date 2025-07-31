@@ -76,6 +76,13 @@ func _physics_process(delta: float) -> void:
 	# Move side to side
 	velocity.x = (_get_action_strength(_get_direction_name(Direction.RIGHT)) - _get_action_strength(_get_direction_name(Direction.LEFT))) * delta * move_speed
 
+	if (_get_action_strength(_get_direction_name(Direction.RIGHT)) - _get_action_strength(_get_direction_name(Direction.LEFT))) > 0.0:
+		head_sprite.flip_h = false
+		torso_sprite.flip_h = false
+	elif (_get_action_strength(_get_direction_name(Direction.RIGHT)) - _get_action_strength(_get_direction_name(Direction.LEFT))) < 0.0:
+		head_sprite.flip_h = true
+		torso_sprite.flip_h = true
+
 	move_and_slide()
 
 func _get_direction_name(direction: Direction) -> StringName:
