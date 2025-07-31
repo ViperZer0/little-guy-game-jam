@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dsnrmdqbuxrfi"]
+[gd_scene load_steps=16 format=3 uid="uid://dsnrmdqbuxrfi"]
 
 [ext_resource type="Texture2D" uid="uid://cbiey2540gl34" path="res://scene/levels/level_4/level_4_0000.png" id="1_s0kvo"]
 [ext_resource type="Script" uid="uid://bsvs1txs1728o" path="res://src/typerwriter_label.gd" id="1_wyoub"]
@@ -28,6 +28,17 @@ size = Vector2(1329, 79)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hfi2u"]
 size = Vector2(597.5, 423)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_wyoub"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_4nx0r"]
+normal = Vector2(0, 1)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_1x6pf"]
+normal = Vector2(1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_155y0"]
+normal = Vector2(-1, 0)
 
 [node name="Level4" type="Node2D"]
 
@@ -106,5 +117,23 @@ upside_down = true
 [node name="PlayerTouchDetector" parent="." instance=ExtResource("6_451bq")]
 
 [node name="NextLevelLoader" parent="." instance=ExtResource("7_wyoub")]
+
+[node name="BorderCollider" type="StaticBody2D" parent="."]
+
+[node name="Floor" type="CollisionShape2D" parent="BorderCollider"]
+position = Vector2(131, 1080)
+shape = SubResource("WorldBoundaryShape2D_wyoub")
+
+[node name="Ceiling" type="CollisionShape2D" parent="BorderCollider"]
+position = Vector2(96, 0)
+shape = SubResource("WorldBoundaryShape2D_4nx0r")
+
+[node name="WallLeft" type="CollisionShape2D" parent="BorderCollider"]
+position = Vector2(0, 941)
+shape = SubResource("WorldBoundaryShape2D_1x6pf")
+
+[node name="WallRight" type="CollisionShape2D" parent="BorderCollider"]
+position = Vector2(1920, 468)
+shape = SubResource("WorldBoundaryShape2D_155y0")
 
 [connection signal="players_collided" from="PlayerTouchDetector" to="NextLevelLoader" method="load_next_level"]

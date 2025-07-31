@@ -1,0 +1,69 @@
+[gd_scene load_steps=11 format=3 uid="uid://fsqbm26j7dqv"]
+
+[ext_resource type="Script" uid="uid://d3ar83pmlcyw5" path="res://component/spinner/spinner.gd" id="1_0ow8x"]
+[ext_resource type="Texture2D" uid="uid://hl1up7o1txuc" path="res://component/spinner/spinner_0000.png" id="1_jw777"]
+[ext_resource type="Texture2D" uid="uid://cvetanft335ac" path="res://component/spinner/spinner_0001.png" id="2_0ow8x"]
+[ext_resource type="Script" uid="uid://mwgdmfugm5vu" path="res://src/toggle_animated_sprite.gd" id="3_jhpmb"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ttyms"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_jw777")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_0ow8x")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gpqar"]
+size = Vector2(859, 62)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jw777"]
+size = Vector2(53, 770)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_m5wla"]
+radius = 31.1448
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0ow8x"]
+radius = 31.1448
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jhpmb"]
+radius = 27.313
+
+[node name="Spinner" type="AnimatableBody2D"]
+script = ExtResource("1_0ow8x")
+
+[node name="ToggleAnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-15, 0)
+sprite_frames = SubResource("SpriteFrames_ttyms")
+frame_progress = 0.747291
+script = ExtResource("3_jhpmb")
+metadata/_custom_type_script = "uid://mwgdmfugm5vu"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-3.5, 0)
+shape = SubResource("RectangleShape2D_gpqar")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="."]
+position = Vector2(-3.5, 0)
+shape = SubResource("RectangleShape2D_jw777")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(426, 0)
+shape = SubResource("CircleShape2D_m5wla")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
+position = Vector2(-433, 0)
+shape = SubResource("CircleShape2D_0ow8x")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="."]
+position = Vector2(-3, -385)
+shape = SubResource("CircleShape2D_jhpmb")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="."]
+position = Vector2(-3, 384)
+shape = SubResource("CircleShape2D_jhpmb")

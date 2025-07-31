@@ -1,0 +1,133 @@
+[gd_scene load_steps=16 format=3 uid="uid://dbprcr7fpee8r"]
+
+[ext_resource type="Texture2D" uid="uid://iyy2mtx8efoc" path="res://scene/levels/level_5/level_5_0000.png" id="1_36a15"]
+[ext_resource type="Texture2D" uid="uid://b3yphiowaa253" path="res://scene/levels/level_5/level_5_0001.png" id="2_sndhx"]
+[ext_resource type="Script" uid="uid://mwgdmfugm5vu" path="res://src/toggle_animated_sprite.gd" id="3_t85pn"]
+[ext_resource type="Script" uid="uid://duy8vsisms73f" path="res://component/death_zone/death_zone.gd" id="4_sndhx"]
+[ext_resource type="PackedScene" uid="uid://bhkpq1h8bb5ni" path="res://component/player/player.tscn" id="5_t85pn"]
+[ext_resource type="PackedScene" uid="uid://ng1kl8h3q7qu" path="res://component/player_touch_detector/player_touch_detector.tscn" id="6_iccud"]
+[ext_resource type="PackedScene" uid="uid://dy6frmqfv11u1" path="res://component/next_level_loader/next_level_loader.tscn" id="7_gkb1r"]
+[ext_resource type="PackedScene" uid="uid://fsqbm26j7dqv" path="res://component/spinner/spinner.tscn" id="8_gkb1r"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sds2n"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_36a15")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_sndhx")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t85pn"]
+size = Vector2(434, 916)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_sds2n"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_iccud"]
+normal = Vector2(0, 1)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_gkb1r"]
+normal = Vector2(1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_8gppd"]
+normal = Vector2(-1, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a8dv8"]
+size = Vector2(908, 48)
+
+[node name="Level5" type="Node2D"]
+
+[node name="Background" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Panel" type="Panel" parent="Background"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"Background"
+
+[node name="ToggleAnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_sds2n")
+frame_progress = 0.360868
+centered = false
+script = ExtResource("3_t85pn")
+metadata/_custom_type_script = "uid://mwgdmfugm5vu"
+
+[node name="Ground" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
+position = Vector2(207, 624)
+shape = SubResource("RectangleShape2D_t85pn")
+
+[node name="Ground2" type="StaticBody2D" parent="."]
+position = Vector2(1495, -179)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground2"]
+position = Vector2(207, 624)
+shape = SubResource("RectangleShape2D_t85pn")
+
+[node name="BorderCollider" type="StaticBody2D" parent="."]
+
+[node name="Floor" type="CollisionShape2D" parent="BorderCollider"]
+position = Vector2(131, 1080)
+shape = SubResource("WorldBoundaryShape2D_sds2n")
+
+[node name="Ceiling" type="CollisionShape2D" parent="BorderCollider"]
+position = Vector2(96, 0)
+shape = SubResource("WorldBoundaryShape2D_iccud")
+
+[node name="WallLeft" type="CollisionShape2D" parent="BorderCollider"]
+position = Vector2(0, 941)
+shape = SubResource("WorldBoundaryShape2D_gkb1r")
+
+[node name="WallRight" type="CollisionShape2D" parent="BorderCollider"]
+position = Vector2(1920, 468)
+shape = SubResource("WorldBoundaryShape2D_8gppd")
+
+[node name="Spikes" type="Node" parent="."]
+
+[node name="DeathZone" type="Area2D" parent="Spikes"]
+collision_layer = 0
+collision_mask = 6
+script = ExtResource("4_sndhx")
+metadata/_custom_type_script = "uid://duy8vsisms73f"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spikes/DeathZone"]
+position = Vector2(985.5, 30)
+shape = SubResource("RectangleShape2D_a8dv8")
+
+[node name="DeathZone2" type="Area2D" parent="Spikes"]
+position = Vector2(-83, 1029)
+collision_layer = 0
+collision_mask = 6
+script = ExtResource("4_sndhx")
+metadata/_custom_type_script = "uid://duy8vsisms73f"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spikes/DeathZone2"]
+position = Vector2(956, 30)
+shape = SubResource("RectangleShape2D_a8dv8")
+
+[node name="Player" parent="." instance=ExtResource("5_t85pn")]
+position = Vector2(111, 108)
+
+[node name="Player2" parent="." instance=ExtResource("5_t85pn")]
+position = Vector2(1712, 992)
+player = 1
+upside_down = true
+
+[node name="PlayerTouchDetector" parent="." instance=ExtResource("6_iccud")]
+
+[node name="NextLevelLoader" parent="." instance=ExtResource("7_gkb1r")]
+
+[node name="Spinner" parent="." instance=ExtResource("8_gkb1r")]
+position = Vector2(964, 556)
+spin_rate = 25.0
+
+[connection signal="players_collided" from="PlayerTouchDetector" to="NextLevelLoader" method="load_next_level"]
