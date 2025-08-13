@@ -4,3 +4,4 @@
 
 [node name="SettingsManager" type="Node"]
 script = ExtResource("1_0hxcx")
+animation_flicker = false
