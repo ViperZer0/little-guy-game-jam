@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://phr6wt8b7ekh"]
+[gd_scene load_steps=24 format=3 uid="uid://phr6wt8b7ekh"]
 
 [ext_resource type="Texture2D" uid="uid://bl0jm0jxk6dit" path="res://scene/levels/level_3/level_3_0000.png" id="1_jiqol"]
 [ext_resource type="Texture2D" uid="uid://bpfq4mqxxmct0" path="res://scene/levels/level_3/level_3_0001.png" id="2_kfw3b"]
@@ -34,20 +34,23 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4pe1d"]
-size = Vector2(176, 130)
+[sub_resource type="CircleShape2D" id="CircleShape2D_pve4f"]
+radius = 67.2681
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_b2uqg"]
-size = Vector2(112, 103)
+[sub_resource type="CircleShape2D" id="CircleShape2D_eph7a"]
+radius = 54.9181
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_pve4f"]
-size = Vector2(151, 80)
+[sub_resource type="CircleShape2D" id="CircleShape2D_grofj"]
+radius = 51.0612
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_eph7a"]
-size = Vector2(148, 103)
+[sub_resource type="CircleShape2D" id="CircleShape2D_nwhny"]
+radius = 50.5396
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_grofj"]
-size = Vector2(173, 88)
+[sub_resource type="CircleShape2D" id="CircleShape2D_v868j"]
+radius = 60.4669
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nifw1"]
+radius = 62.532
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nwhny"]
 size = Vector2(1378, 232)
@@ -110,7 +113,7 @@ script = ExtResource("4_kfw3b")
 metadata/_custom_type_script = "uid://duy8vsisms73f"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Spikes/DeathZone"]
-shape = SubResource("RectangleShape2D_4pe1d")
+shape = SubResource("CircleShape2D_pve4f")
 
 [node name="DeathZone2" type="Area2D" parent="Spikes"]
 position = Vector2(319, 978)
@@ -120,7 +123,7 @@ script = ExtResource("4_kfw3b")
 metadata/_custom_type_script = "uid://duy8vsisms73f"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Spikes/DeathZone2"]
-shape = SubResource("RectangleShape2D_4pe1d")
+shape = SubResource("CircleShape2D_eph7a")
 
 [node name="DeathZone3" type="Area2D" parent="Spikes"]
 position = Vector2(636, 803)
@@ -131,7 +134,7 @@ metadata/_custom_type_script = "uid://duy8vsisms73f"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Spikes/DeathZone3"]
 position = Vector2(-7, -13.5)
-shape = SubResource("RectangleShape2D_b2uqg")
+shape = SubResource("CircleShape2D_grofj")
 
 [node name="DeathZone4" type="Area2D" parent="Spikes"]
 position = Vector2(1040, 668)
@@ -142,7 +145,7 @@ metadata/_custom_type_script = "uid://duy8vsisms73f"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Spikes/DeathZone4"]
 position = Vector2(-10.5, -2)
-shape = SubResource("RectangleShape2D_pve4f")
+shape = SubResource("CircleShape2D_nwhny")
 
 [node name="DeathZone5" type="Area2D" parent="Spikes"]
 position = Vector2(1035, 236)
@@ -153,7 +156,7 @@ metadata/_custom_type_script = "uid://duy8vsisms73f"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Spikes/DeathZone5"]
 position = Vector2(-2, 11.5)
-shape = SubResource("RectangleShape2D_eph7a")
+shape = SubResource("CircleShape2D_v868j")
 
 [node name="DeathZone6" type="Area2D" parent="Spikes"]
 position = Vector2(1434, 335)
@@ -164,7 +167,7 @@ metadata/_custom_type_script = "uid://duy8vsisms73f"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Spikes/DeathZone6"]
 position = Vector2(-1.5, 14)
-shape = SubResource("RectangleShape2D_grofj")
+shape = SubResource("CircleShape2D_nifw1")
 
 [node name="Player" parent="." instance=ExtResource("5_4pe1d")]
 position = Vector2(137, 936)

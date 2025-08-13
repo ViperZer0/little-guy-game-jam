@@ -109,7 +109,7 @@ script = ExtResource("4_sndhx")
 metadata/_custom_type_script = "uid://duy8vsisms73f"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DeathZone"]
-position = Vector2(985.5, 30)
+position = Vector2(1009, 4)
 shape = SubResource("RectangleShape2D_a8dv8")
 
 [node name="DeathZone2" type="Area2D" parent="."]
@@ -120,7 +120,7 @@ script = ExtResource("4_sndhx")
 metadata/_custom_type_script = "uid://duy8vsisms73f"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DeathZone2"]
-position = Vector2(956, 30)
+position = Vector2(937, 32)
 shape = SubResource("RectangleShape2D_a8dv8")
 
 [node name="Player" parent="." instance=ExtResource("5_t85pn")]

@@ -24,7 +24,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_451bq"]
-size = Vector2(1329, 79)
+size = Vector2(1329, 50.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hfi2u"]
 size = Vector2(597.5, 423)
@@ -89,7 +89,7 @@ script = ExtResource("4_hfi2u")
 metadata/_custom_type_script = "uid://duy8vsisms73f"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Spikes/DeathZone2"]
-position = Vector2(1268, 1039)
+position = Vector2(1268, 1053.25)
 shape = SubResource("RectangleShape2D_451bq")
 
 [node name="Ground" type="StaticBody2D" parent="."]
